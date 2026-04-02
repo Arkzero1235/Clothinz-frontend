@@ -1,0 +1,33 @@
+<header class="navbar">
+  <nav class="navbar-inner page-container">
+    <a routerLink="/" class="navbar-logo">CLOTHINZ</a>
+
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <span class="material-symbols-outlined">{{ isMenuOpen ? 'close' : 'menu' }}</span>
+    </button>
+
+    <div class="navbar-links" [class.active]="isMenuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="isMenuOpen = false">Shop</a>
+      <a routerLink="/collections" routerLinkActive="active" (click)="isMenuOpen = false">Collections</a>
+      <a href="#" (click)="isMenuOpen = false">Editorial</a>
+      <a href="#" (click)="isMenuOpen = false">About</a>
+    </div>
+
+    <div class="navbar-actions">
+      <nz-input-group [nzPrefix]="searchPrefix" class="search-input">
+        <input nz-input type="text" placeholder="Search curated items..." [(ngModel)]="searchQuery" />
+      </nz-input-group>
+      <ng-template #searchPrefix>
+        <span class="material-symbols-outlined" style="font-size:16px;color:#9ca3af">search</span>
+      </ng-template>
+
+      <a nz-button nzType="text" class="icon-btn cart-btn" routerLink="/cart">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="cart-count" *ngIf="(totalItems$ | async) as count">{{ count }}</span>
+      </a>
+      <a nz-button nzType="text" class="icon-btn" routerLink="/account">
+        <span class="material-symbols-outlined">person</span>
+      </a>
+    </div>
+  </nav>
+</header>

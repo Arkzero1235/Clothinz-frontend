@@ -1,0 +1,36 @@
+.danger-zone {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(191, 199, 213, .15);
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 640px) {
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    @media (max-width: 640px) {
+      width: 100%;
+      justify-content: center;
+      height: 44px;
+      border: 1px solid var(--error) !important;
+      border-radius: 4px;
+      
+      &:hover {
+        background: rgba(186, 26, 26, 0.05) !important;
+      }
+    }
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,100 @@
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  min-width: 0; // Prevent grid from expanding beyond parent
+
+  @media (max-width: 1024px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 100%; // Explicitly single column
+    gap: 1rem;
+  }
+}
+
+.settings-card {
+  background: var(--surface-container-lowest); // Changed to lowest for better contrast
+  border: 1px solid var(--surface-container-high);
+  border-radius: .75rem;
+  padding: 2.5rem;
+
+  @media (max-width: 1024px) {
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 0; // Modern "list" feel for mobile
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--on-surface);
+  }
+
+  .settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    .s-label {
+      font-size: .875rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+      color: var(--on-surface);
+    }
+
+    .s-desc {
+      font-size: .8125rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    ::ng-deep .ant-switch {
+      flex-shrink: 0;
+    }
+  }
+
+  .sec-note {
+    font-size: .8125rem;
+    color: var(--on-surface-variant);
+    margin-bottom: 1.5rem;
+  }
+
+  .sec-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    button {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+
+      .material-symbols-outlined {
+        font-size: 20px;
+      }
+    }
+  }
+}

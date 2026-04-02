@@ -1,0 +1,35 @@
+<div class="products-area">
+      <div class="products-toolbar">
+        <span>Showing 24 products</span>
+        <div class="sort-row">
+          <label>Sort by:</label>
+          <nz-select [ngModel]="sortBy" (ngModelChange)="sortByChange.emit($event)" nzVariant="borderless" style="width:160px">
+            <nz-option nzValue="new"        nzLabel="New Arrivals"></nz-option>
+            <nz-option nzValue="price-asc"  nzLabel="Price: Low to High"></nz-option>
+            <nz-option nzValue="price-desc" nzLabel="Price: High to Low"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        @for (p of products; track p.id) {
+          <div class="col-product" [routerLink]="['/product', p.id]">
+            <div class="col-img">
+              <img [src]="p.image" [alt]="p.name" />
+              <div class="cart-hover">
+                <button nz-button nzType="primary" (click)="$event.stopPropagation()">Add to Cart</button>
+              </div>
+            </div>
+            <div class="col-info">
+              <p class="col-brand">{{ p.brand }}</p>
+              <h3>{{ p.name }}</h3>
+              <p class="col-price">{{ p.price }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="pagination-wrap">
+        <nz-pagination [nzPageIndex]="currentPage" (nzPageIndexChange)="currentPageChange.emit($event)" [nzTotal]="120" [nzPageSize]="6" />
+      </div>
+    </div>

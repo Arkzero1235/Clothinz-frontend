@@ -1,0 +1,58 @@
+.checkout-main-container {
+  min-height: 80vh;
+}
+
+.checkout-grid-layout {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 8rem;
+  align-items: start;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 400px;
+    gap: 4rem;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.step-form-area {
+  max-width: 700px;
+  width: 100%;
+}
+
+.sidebar-summary-area {
+  width: 100%;
+  position: sticky;
+  top: 8rem;
+  
+  @media (max-width: 1024px) {
+    order: -1; // Put summary on top for mobile if needed, or follow image
+    position: static;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Extra branded styling
+.checkout-header {
+  .logo a {
+    letter-spacing: -0.05em;
+  }
+}
+
+.checkout-footer {
+  .footer-links span {
+    transition: all 0.3s;
+  }
+}

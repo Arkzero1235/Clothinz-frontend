@@ -1,0 +1,110 @@
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  gap: 1.5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bento-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0b0c0d;
+  min-height: 200px;
+
+  @media (max-width: 1024px) {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    aspect-ratio: 16/9;
+  }
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  opacity: 0.8;
+}
+
+.bento-item:hover img {
+  transform: scale(1.05);
+  opacity: 0.6;
+}
+
+.bento-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-top-right {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.bento-small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+  pointer-events: none;
+
+  @media (max-width: 640px) {
+    padding: 1.5rem;
+  }
+}
+
+.bento-overlay h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  color: #dcd7cc;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.bento-large .bento-overlay h3 {
+  font-size: 2rem;
+  @media (max-width: 640px) { font-size: 1.5rem; }
+}
+
+.bento-overlay p {
+  color: #bfc7d5;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  @media (max-width: 640px) { display: none; }
+}
+
+.bento-overlay a {
+  display: inline-block;
+  color: #dcd7cc;
+  text-decoration: none;
+  border-bottom: 1px solid #dcd7cc;
+  padding-bottom: 4px;
+  pointer-events: auto;
+  width: fit-content;
+  transition: color 0.3s, border-color 0.3s;
+  font-size: 0.875rem;
+}
+
+.bento-overlay a:hover {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}

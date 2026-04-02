@@ -1,0 +1,46 @@
+<div class="bg-surface-container-lowest overflow-hidden rounded-xl shadow-sm">
+  <div class="p-8 border-b border-outline-variant/10">
+    <h2 class="text-2xl font-bold tracking-tight">Exhibited Items ({{ items.length }})</h2>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="header-row text-secondary-variant text-[10px] uppercase tracking-widest">
+          <th class="px-8 py-4 font-bold">PRODUCT DETAILS</th>
+          <th class="px-8 py-4 font-bold text-center">QTY</th>
+          <th class="px-8 py-4 font-bold text-right">PRICE</th>
+          <th class="px-4 py-4"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-outline-variant/5">
+        <tr *ngFor="let item of items">
+          <td class="px-8 py-10">
+            <div class="flex items-center gap-8">
+              <div class="product-img-wrapper">
+                <img [src]="item.image" [alt]="item.name" />
+              </div>
+              <div>
+                <h4 class="font-bold text-on-surface">{{ item.name }}</h4>
+                <p class="item-ref" *ngIf="item.ref">REF: {{ item.ref }}</p>
+                <p class="item-specs mt-2">
+                  <span *ngIf="item.size" class="text-secondary font-medium">Size: {{ item.size }}</span>
+                  <span *ngIf="item.size && item.color" class="mx-2 text-outline-variant">|</span>
+                  <span *ngIf="item.color" class="text-secondary font-medium">Color: {{ item.color }}</span>
+                </p>
+              </div>
+            </div>
+          </td>
+          <td class="px-8 py-10 text-center">
+            <nz-input-number [(ngModel)]="item.quantity" [nzMin]="1" [nzMax]="10" (ngModelChange)="onQuantityChange(item.id, $event)"></nz-input-number>
+          </td>
+          <td class="px-8 py-10 text-right price-cell">${{ (item.price * item.quantity) | number:'1.2-2' }}</td>
+          <td class="px-4 py-10 text-center">
+            <button nz-button nzType="text" class="remove-btn" (click)="onRemove(item.id)">
+              <span class="material-symbols-outlined text-error">delete</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

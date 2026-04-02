@@ -1,0 +1,69 @@
+<section class="checkout-step-container fade-in">
+  <h2 class="step-title mb-10">Shipping Information</h2>
+  
+  <div class="form-grid">
+    <!-- Row 1: First/Last Name -->
+    <div class="field-group grid-cols-2">
+      <div class="form-field">
+        <label>FIRST NAME</label>
+        <input nz-input [(ngModel)]="form.firstName" placeholder="e.g. Julian" />
+      </div>
+      <div class="form-field">
+        <label>LAST NAME</label>
+        <input nz-input [(ngModel)]="form.lastName" placeholder="e.g. Thorne" />
+      </div>
+    </div>
+
+    <!-- Row 2: Street Address -->
+    <div class="form-field">
+      <label>STREET ADDRESS</label>
+      <input nz-input [(ngModel)]="form.address" placeholder="123 Gallery Lane, Suite 400" />
+    </div>
+
+    <!-- Row 3: City / Zip / Country -->
+    <div class="field-group grid-cols-3">
+      <div class="form-field">
+        <label>CITY</label>
+        <input nz-input [(ngModel)]="form.city" placeholder="New York" />
+      </div>
+      <div class="form-field">
+        <label>ZIP CODE</label>
+        <input nz-input [(ngModel)]="form.zip" placeholder="10012" />
+      </div>
+      <div class="form-field">
+        <label>COUNTRY</label>
+        <nz-select [(ngModel)]="form.country" class="w-full">
+          <nz-option nzValue="United States" nzLabel="United States"></nz-option>
+          <nz-option nzValue="France" nzLabel="France"></nz-option>
+          <nz-option nzValue="Japan" nzLabel="Japan"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delivery Method -->
+  <div class="delivery-methods mt-12">
+    <h3 class="section-label mb-6">DELIVERY METHOD</h3>
+    <div class="delivery-grid grid-cols-2">
+      <div class="delivery-card" [class.selected]="selectedMethod === 'standard'" (click)="selectedMethod = 'standard'">
+        <div class="flex justify-between items-start mb-2">
+          <span class="font-bold text-sm">Standard Courier</span>
+          <span class="text-primary font-bold text-xs">Free</span>
+        </div>
+        <p class="text-[10px] text-secondary">3-5 business days</p>
+      </div>
+      <div class="delivery-card" [class.selected]="selectedMethod === 'express'" (click)="selectedMethod = 'express'">
+        <div class="flex justify-between items-start mb-2">
+          <span class="font-bold text-sm">Express Editorial</span>
+          <span class="text-on-surface font-bold text-xs">$25.00</span>
+        </div>
+        <p class="text-[10px] text-secondary">Next day delivery</p>
+      </div>
+    </div>
+  </div>
+
+  <button nz-button nzType="primary" class="continue-btn mt-16" (click)="onNext()">
+    Continue to Payment
+    <span class="material-symbols-outlined ml-2 font-light">arrow_forward</span>
+  </button>
+</section>

@@ -1,0 +1,17 @@
+<main class="page-container pd-main">
+  <!-- Breadcrumb -->
+  <app-product-detail-breadcrumb productName="The Sculptural Silk Blazer" />
+
+  <div class="pd-layout">
+    <app-product-detail-gallery />
+
+    <app-product-detail-info
+      [(selectedColor)]="selectedColor"
+      [(selectedSize)]="selectedSize"
+      [colors]="colors"
+      [sizes]="sizes"
+    />
+  </div>
+
+  <app-product-detail-related [related]="related" />
+</main>

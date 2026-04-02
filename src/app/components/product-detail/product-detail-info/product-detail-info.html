@@ -1,0 +1,63 @@
+<div class="pd-details">
+      <p class="collection-label">Spring/Summer 2024</p>
+      <h1>The Sculptural Silk Blazer</h1>
+
+      <div class="price-row">
+        <span class="price">$1,250.00</span>
+        <span class="orig-price">$1,800.00</span>
+        <nz-tag nzColor="blue">LIMITED RELEASE</nz-tag>
+      </div>
+
+      <p class="desc">A definitive piece for the modern wardrobe. Hand-finished in our Milanese workshop, this blazer features a unique sculptural silhouette crafted from ultra-heavy 40mm mulberry silk.</p>
+
+      <!-- Color -->
+      <div class="selector">
+        <h3>COLOR / <span class="val">{{ getSelectedColorName() | uppercase }}</span></h3>
+        <div class="swatches">
+          @for (c of colors; track c.id) {
+            <button class="swatch" [class.active]="selectedColor === c.id"
+              [style.background-color]="c.hex" (click)="selectColor(c.id)">
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Size -->
+      <div class="selector">
+        <div class="size-head">
+          <h3>SELECT SIZE</h3>
+          <button nz-button nzType="link" class="size-guide">Size Guide</button>
+        </div>
+        <div class="size-grid">
+          @for (s of sizes; track s) {
+            <button class="size-btn" [class.active]="selectedSize === s" (click)="selectSize(s)">{{ s }}</button>
+          }
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="pd-actions">
+        <button nz-button nzType="primary" nzSize="large" nzBlock class="btn-cart">ADD TO CART</button>
+        <button nz-button nzSize="large" nzBlock class="btn-buy">BUY IT NOW</button>
+      </div>
+
+      <nz-divider />
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature">
+          <div class="feat-icon"><span class="material-symbols-outlined">eco</span></div>
+          <div>
+            <h4>Sustainable Origin</h4>
+            <p>Sourced from certified organic silk farms with zero-waste processing.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-icon"><span class="material-symbols-outlined">local_shipping</span></div>
+          <div>
+            <h4>Complimentary White-Glove Shipping</h4>
+            <p>Next-day delivery included for all premium-tier purchases.</p>
+          </div>
+        </div>
+      </div>
+    </div>

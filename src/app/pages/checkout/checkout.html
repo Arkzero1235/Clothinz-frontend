@@ -1,0 +1,89 @@
+<!-- Specialized Checkout Header -->
+<header class="checkout-header py-8 px-10 flex justify-between items-center border-b border-outline-variant/5 bg-white sticky top-0 z-50">
+  <div class="logo">
+    <a routerLink="/" class="text-xl font-black tracking-tighter text-on-surface">CURATED</a>
+  </div>
+  <div class="flex items-center gap-2 text-secondary-variant text-[10px] font-black uppercase tracking-wider">
+    <span class="material-symbols-outlined text-[16px]">lock</span>
+    <span>Secure Checkout</span>
+  </div>
+</header>
+
+<main class="checkout-main-container max-w-[1400px] mx-auto px-10 py-16">
+  <div class="checkout-grid-layout">
+    
+    <!-- Left: Step Forms -->
+    <div class="step-form-area text-left">
+      <app-checkout-stepper 
+        [activeStep]="step"
+        (stepChange)="onStepChange($event)">
+      </app-checkout-stepper>
+
+      <!-- Step: Shipping -->
+      <app-checkout-shipping-form
+        *ngIf="step === 'shipping'"
+        [form]="shippingForm"
+        (next)="onStepChange('payment')">
+      </app-checkout-shipping-form>
+
+      <!-- Step: Payment -->
+      <app-checkout-payment-form
+        *ngIf="step === 'payment'"
+        [form]="paymentForm"
+        (next)="onStepChange('review')">
+      </app-checkout-payment-form>
+
+      <!-- Step: Review -->
+      <section *ngIf="step === 'review'" class="fade-in">
+        <h2 class="text-3xl font-bold tracking-tight mb-8">Review & Finalize</h2>
+        <div class="bg-surface-container-low p-8 rounded-xl space-y-8 mb-12">
+          <div class="grid grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-xs font-black uppercase tracking-widest text-primary mb-4">Shipping To</h3>
+              <p class="font-bold">{{ shippingForm.firstName }} {{ shippingForm.lastName }}</p>
+              <p class="text-sm text-on-surface-variant">{{ shippingForm.address }}</p>
+              <p class="text-sm text-on-surface-variant">{{ shippingForm.city }}, {{ shippingForm.zip }}, {{ shippingForm.country }}</p>
+            </div>
+            <div>
+              <h3 class="text-xs font-black uppercase tracking-widest text-primary mb-4">Payment Method</h3>
+              <p class="font-bold uppercase">{{ paymentForm.method }}</p>
+              <p class="text-sm text-on-surface-variant">Ending in •••• 4492</p>
+            </div>
+          </div>
+        </div>
+        <button nz-button nzType="primary" class="h-16 px-16 rounded-xl font-black text-sm uppercase tracking-widest shadow-xl shadow-primary/20" (click)="placeOrder()">
+          Complete Purchase
+          <span class="material-symbols-outlined ml-2">check_circle</span>
+        </button>
+      </section>
+    </div>
+
+    <!-- Right: Sidebar Summary -->
+    <aside class="sidebar-summary-area" *ngIf="(items$ | async) as items">
+      <ng-container *ngIf="(subtotal$ | async) as subtotal">
+        <app-checkout-summary
+          [items]="items"
+          [subtotal]="subtotal"
+          [tax]="getTax(subtotal)"
+          [total]="getTotal(subtotal)"
+          [shipping]="shippingValue">
+        </app-checkout-summary>
+      </ng-container>
+    </aside>
+  </div>
+</main>
+
+<!-- Unified Checkout Footer -->
+<footer class="checkout-footer py-20 px-10 bg-surface-container-lowest border-t border-outline-variant/10">
+  <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+    <div class="footer-links flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-secondary-variant">
+      <span class="cursor-pointer hover:text-primary transition-colors">CURATED</span>
+      <span class="cursor-pointer hover:text-primary transition-colors">SUSTAINABILITY</span>
+      <span class="cursor-pointer hover:text-primary transition-colors">SHIPPING</span>
+      <span class="cursor-pointer hover:text-primary transition-colors">RETURNS</span>
+    </div>
+    <div class="legal text-[10px] text-secondary font-medium tracking-wider">
+      © 2024 CURATED EDITORIAL. ALL RIGHTS RESERVED.
+    </div>
+  </div>
+</footer>

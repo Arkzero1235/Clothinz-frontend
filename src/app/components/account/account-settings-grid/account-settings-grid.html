@@ -1,0 +1,40 @@
+<section class="settings-grid">
+  @if (mode === 'all' || mode === 'notifications') {
+  <div class="settings-card">
+    <h3>Notification Preferences</h3>
+    <div class="settings-list">
+      <div class="settings-item">
+        <div>
+          <p class="s-label">Order Updates</p>
+          <p class="s-desc">Real-time shipping and delivery alerts</p>
+        </div>
+        <nz-switch [ngModel]="orderUpdates" (ngModelChange)="orderUpdatesChange.emit($event)" />
+      </div>
+      <div class="settings-item">
+        <div>
+          <p class="s-label">Editorial Newsletter</p>
+          <p class="s-desc">Weekly curation of design and lifestyle</p>
+        </div>
+        <nz-switch [ngModel]="newsletter" (ngModelChange)="newsletterChange.emit($event)" />
+      </div>
+    </div>
+  </div>
+  }
+
+  @if (mode === 'all' || mode === 'security') {
+  <div class="settings-card">
+    <h3>Account Security</h3>
+    <p class="sec-note">Last password change: 4 months ago</p>
+    <div class="sec-btns">
+      <button nz-button nzBlock (click)="openUpdatePasswordModal()">
+        <span class="material-symbols-outlined">lock</span>
+        <span>Update Password</span>
+      </button>
+      <button nz-button nzBlock>
+        <span class="material-symbols-outlined">logout</span>
+        <span>Log out</span>
+      </button>
+    </div>
+  </div>
+  }
+</section>

@@ -1,0 +1,37 @@
+<main class="page-container cart-main">
+  <header class="cart-header">
+    <span class="font-['Inter'] text-sm uppercase tracking-widest text-secondary mb-2 block">Your Selection</span>
+    <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-on-surface">Review Cart</h1>
+    <p class="text-on-surface-variant max-w-xl leading-relaxed">Refine your selection before we curate your final package.</p>
+  </header>
+
+  <div class="cart-layout" *ngIf="(items$ | async) as items; else emptyCart">
+    <div class="cart-items-section" *ngIf="items.length > 0; else emptyCart">
+      <app-cart-items-table 
+        [items]="items"
+        (quantityChange)="onQuantityChange($event)"
+        (remove)="removeItem($event)">
+      </app-cart-items-table>
+    </div>
+
+    <!-- Sidebar Summary -->
+    <aside class="cart-summary" *ngIf="items.length > 0 && (subtotal$ | async) as subtotal">
+      <app-cart-summary
+        [subtotal]="subtotal"
+        [tax]="getTax(subtotal)"
+        [total]="getTotal(subtotal)"
+        [shipping]="shipping">
+      </app-cart-summary>
+    </aside>
+  </div>
+
+  <!-- Empty Cart Template -->
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <span class="material-symbols-outlined text-6xl text-outline-variant mb-6">shopping_bag</span>
+      <h2>Your bag is currently empty</h2>
+      <p>Discover our latest curated collections to find your next essential.</p>
+      <button nz-button nzType="primary" routerLink="/collections" class="mt-8 px-8 h-12 rounded-full">Explore Collections</button>
+    </div>
+  </ng-template>
+</main>

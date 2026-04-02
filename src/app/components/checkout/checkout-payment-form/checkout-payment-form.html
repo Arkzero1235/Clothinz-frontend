@@ -1,0 +1,51 @@
+<section class="checkout-step-container fade-in">
+  <h2 class="step-title mb-10">Payment Information</h2>
+  
+  <div class="payment-methods mb-12">
+    <h3 class="section-label mb-6">SELECT PAYMENT METHOD</h3>
+    <div class="delivery-grid grid-cols-2">
+      <div class="delivery-card" [class.selected]="form.method === 'visa'" (click)="form.method = 'visa'">
+        <div class="flex justify-between items-start mb-2">
+          <span class="font-bold text-sm">Visa / Mastercard</span>
+          <span class="material-symbols-outlined text-[18px] text-primary">credit_card</span>
+        </div>
+        <p class="text-[10px] text-secondary">Pay securely with your card</p>
+      </div>
+      <div class="delivery-card" [class.selected]="form.method === 'paypal'" (click)="form.method = 'paypal'">
+        <div class="flex justify-between items-start mb-2">
+          <span class="font-bold text-sm">PayPal</span>
+          <span class="material-symbols-outlined text-[18px] text-primary">payments</span>
+        </div>
+        <p class="text-[10px] text-secondary">Fast and secure checkout</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-grid" *ngIf="form.method === 'visa'">
+    <div class="form-field">
+      <label>CARD HOLDER NAME</label>
+      <input nz-input [(ngModel)]="form.cardHolder" placeholder="e.g. Julian Thorne" />
+    </div>
+
+    <div class="form-field">
+      <label>CARD NUMBER</label>
+      <input nz-input [(ngModel)]="form.cardNumber" placeholder="0000 0000 0000 0000" />
+    </div>
+
+    <div class="field-group grid-cols-2">
+      <div class="form-field">
+        <label>EXPIRY DATE</label>
+        <input nz-input [(ngModel)]="form.expiry" placeholder="MM / YY" />
+      </div>
+      <div class="form-field">
+        <label>CVV / CVC</label>
+        <input nz-input [(ngModel)]="form.cvv" placeholder="•••" />
+      </div>
+    </div>
+  </div>
+
+  <button nz-button nzType="primary" class="continue-btn mt-16" (click)="onNext()">
+    Review Order
+    <span class="material-symbols-outlined ml-2 font-light">arrow_forward</span>
+  </button>
+</section>

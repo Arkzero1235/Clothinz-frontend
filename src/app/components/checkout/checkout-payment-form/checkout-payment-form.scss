@@ -1,0 +1,101 @@
+.checkout-step-container {
+  padding-bottom: 4rem;
+}
+
+.step-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #1a202c;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 850;
+  color: #1a202c;
+  letter-spacing: 0.1em;
+}
+
+.delivery-grid {
+  display: grid;
+  gap: 1rem;
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.delivery-card {
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+  
+  &.selected {
+    border-color: #1a6ff8;
+    border-width: 2px;
+    background: #f0f7ff;
+    padding: calc(1.5rem - 1px);
+  }
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field-group {
+  display: grid;
+  gap: 1.5rem;
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #94a3b8;
+    letter-spacing: 0.1em;
+  }
+
+  ::ng-deep .ant-input {
+    height: 52px;
+    background: #f8fafc;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 0 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+
+    &:focus {
+      background: white;
+      border-color: #1a6ff8;
+      box-shadow: 0 0 0 4px rgba(26, 111, 248, 0.05);
+    }
+  }
+}
+
+.continue-btn {
+  height: 60px !important;
+  padding: 0 3rem !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  box-shadow: 0 4px 15px rgba(26, 111, 248, 0.2) !important;
+}

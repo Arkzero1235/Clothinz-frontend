@@ -1,0 +1,18 @@
+<section class="related">
+      <div class="related-head">
+        <div>
+          <h2>Complete the Look</h2>
+          <p>Pieces curated to complement the Sculptural Silk Blazer</p>
+        </div>
+        <button nz-button nzType="link" routerLink="/collections">VIEW COLLECTION</button>
+      </div>
+      <div class="related-grid">
+        @for (r of related; track r.id) {
+          <div class="related-item" [routerLink]="['/product', r.id]">
+            <div class="related-img"><img [src]="r.image" [alt]="r.name" /></div>
+            <h3>{{ r.name }}</h3>
+            <p>{{ r.price }}</p>
+          </div>
+        }
+      </div>
+    </section>

@@ -1,0 +1,47 @@
+<aside class="filter-sidebar">
+  <button type="button" class="mobile-toggle" (click)="toggleSidebar()">
+    <span class="material-symbols-outlined">tune</span>
+    <span>Filters</span>
+    <span class="material-symbols-outlined ms-auto" [class.rotate]="isExpanded">expand_more</span>
+  </button>
+
+  <div class="sidebar-content" [class.expanded]="isExpanded">
+    <div class="filter-group">
+      <h3>Category</h3>
+      @for (cat of categories; track cat.label) {
+        <label nz-checkbox [ngModel]="cat.checked" (ngModelChange)="onCategoryChange(cat, $event)">{{ cat.label }}</label>
+      }
+    </div>
+
+    <!-- ... (other filter groups) -->
+    <div class="filter-group">
+      <h3>Price Range</h3>
+      <nz-slider [ngModel]="priceRange" (ngModelChange)="priceRangeChange.emit($event)" [nzMin]="0" [nzMax]="2500" />
+      <div class="price-labels">
+        <span>$0</span>
+        <span>$2,500+</span>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h3>Brand</h3>
+      <nz-radio-group [ngModel]="selectedBrand" (ngModelChange)="selectedBrandChange.emit($event)" class="brand-radios">
+        <label nz-radio nzValue="clothinz">Clothinz House</label>
+        <label nz-radio nzValue="minimalist">Minimalist Studio</label>
+        <label nz-radio nzValue="loom">Loom &amp; Thread</label>
+      </nz-radio-group>
+    </div>
+
+    <div class="filter-group">
+      <h3>Rating</h3>
+      <div class="rating-filter">
+        <span class="material-symbols-outlined star-on">star</span>
+        <span class="material-symbols-outlined star-on">star</span>
+        <span class="material-symbols-outlined star-on">star</span>
+        <span class="material-symbols-outlined star-on">star</span>
+        <span class="material-symbols-outlined star-off">star</span>
+        <span class="rating-label">&amp; Up</span>
+      </div>
+    </div>
+  </div>
+</aside>

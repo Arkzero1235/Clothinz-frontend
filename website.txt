@@ -1,0 +1,1139 @@
+<!-- Order Details (Web) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details | CURATED</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container-highest": "#dbe2f9",
+                "on-primary-container": "#f3f3ff",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "on-surface": "#141b2c",
+                "on-secondary-fixed": "#0f1c2d",
+                "secondary-container": "#d6e3fb",
+                "primary-fixed-dim": "#b4c5ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "surface-bright": "#f9f9ff",
+                "on-tertiary-fixed-variant": "#832700",
+                "tertiary-fixed": "#ffdbcf",
+                "inverse-surface": "#293041",
+                "inverse-primary": "#b4c5ff",
+                "surface-container-low": "#f1f3ff",
+                "surface-container": "#e9edff",
+                "secondary": "#525f73",
+                "on-primary-fixed": "#00174b",
+                "on-tertiary-container": "#fff1ed",
+                "on-error": "#ffffff",
+                "on-background": "#141b2c",
+                "surface-variant": "#dbe2f9",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed": "#390c00",
+                "tertiary-container": "#c84000",
+                "primary-container": "#0062ff",
+                "inverse-on-surface": "#edf0ff",
+                "background": "#f9f9ff",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#bac7de",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-high": "#e0e8ff",
+                "on-surface-variant": "#424656",
+                "secondary-fixed": "#d6e3fb",
+                "surface-dim": "#d2daf0",
+                "on-error-container": "#93000a",
+                "surface-tint": "#0053da",
+                "on-secondary-container": "#586579",
+                "surface": "#f9f9ff",
+                "tertiary": "#9e3100",
+                "outline-variant": "#c2c6d9",
+                "on-secondary-fixed-variant": "#3b485a",
+                "tertiary-fixed-dim": "#ffb59c",
+                "primary-fixed": "#dbe1ff",
+                "primary": "#004cca",
+                "outline": "#737687"
+              },
+              fontFamily: {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        /* Custom Stepper Styling to mimic Ant Design */
+        .step-active { color: #004cca; font-weight: 600; }
+        .step-line { height: 2px; flex: 1; background-color: #e0e8ff; margin: 0 1rem; }
+        .step-line-active { background-color: #004cca; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-8 h-20 max-w-full">
+<div class="text-2xl font-black tracking-tighter text-blue-800 dark:text-blue-200">CURATED</div>
+<nav class="hidden md:flex items-center space-x-10">
+<a class="text-slate-600 dark:text-slate-400 font-['Inter'] tracking-tight hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 font-['Inter'] tracking-tight hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Editorial</a>
+<a class="text-slate-600 dark:text-slate-400 font-['Inter'] tracking-tight hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Collections</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-blue-700 dark:text-blue-400 hover:scale-95 duration-200" data-icon="shopping_bag">shopping_bag</button>
+<button class="material-symbols-outlined text-blue-700 dark:text-blue-400 hover:scale-95 duration-200" data-icon="person">person</button>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Editorial Header -->
+<div class="mb-16 border-l-4 border-primary pl-8">
+<span class="font-['Inter'] text-sm uppercase tracking-widest text-tertiary mb-2 block">Purchase Confirmation</span>
+<h1 class="text-5xl md:text-6xl font-black tracking-tighter mb-4 text-on-surface">Order #CR-94021</h1>
+<p class="text-on-surface-variant max-w-xl body-md leading-relaxed">Your order has been meticulously curated and is currently on its journey to you. We've updated your shipping status below.</p>
+</div>
+<!-- Tracking Steps (Ant Design Style) -->
+<div class="bg-surface-container-low p-10 rounded-xl mb-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center flex-1">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl" data-icon="check" data-weight="fill">check</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-bold uppercase tracking-widest text-primary">Placed</p>
+<p class="text-xs text-on-surface-variant">Oct 24, 10:20 AM</p>
+</div>
+</div>
+<div class="hidden md:block step-line step-line-active"></div>
+<div class="flex items-center flex-1">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl" data-icon="local_shipping" data-weight="fill">local_shipping</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-bold uppercase tracking-widest text-primary">Shipped</p>
+<p class="text-xs text-on-surface-variant">Oct 25, 02:45 PM</p>
+</div>
+</div>
+<div class="hidden md:block step-line"></div>
+<div class="flex items-center flex-1 opacity-50">
+<div class="w-10 h-10 rounded-full border-2 border-outline flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-xl" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-bold uppercase tracking-widest">Out for delivery</p>
+<p class="text-xs">Estimated: Today</p>
+</div>
+</div>
+<div class="hidden md:block step-line"></div>
+<div class="flex items-center flex-1 opacity-50">
+<div class="w-10 h-10 rounded-full border-2 border-outline flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-xl" data-icon="package_2">package_2</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-bold uppercase tracking-widest">Delivered</p>
+<p class="text-xs">Pending</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+<!-- Items Table (Ant Design style) -->
+<div class="lg:col-span-2 space-y-8">
+<div class="bg-surface-container-lowest overflow-hidden rounded-xl">
+<div class="p-8 border-b border-outline-variant/10">
+<h2 class="text-2xl font-bold tracking-tight">Exhibited Items (3)</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 text-on-surface-variant text-xs uppercase tracking-widest">
+<th class="px-8 py-4 font-semibold">Product Details</th>
+<th class="px-8 py-4 font-semibold text-center">Qty</th>
+<th class="px-8 py-4 font-semibold text-right">Price</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container rounded-md overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist glass fragrance bottle on a marble pedestal with soft museum-style lighting and neutral tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2oJxsTPlNwlKqW16yNPTsJToNZ-DcGRdcxYqc6TjoTWM5CVLn_om5kEcVM4FygHDFFkRNbr0BJf_bL3z-ZsysC2YOj4NOHKPJbHppRa1oZDMFoqVXn11wwEvLDPnu1upxBnebFYSUYPhkfvYFAxsJLFHcBUEmsV-dnFBnaMyFjjOLQryy_TV_AdGYyyhgWWfWzS45HnOQ15nX-2unZ-ymbGidfjb62cKWerRzFP_IfqYZTUiNjF0WJJ5avujCf3qFUuE54prEvIHd"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">L'Eau de Minimaliste</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider mt-1">Ref: 0942-A</p>
+<p class="text-sm text-secondary mt-1">Size: 100ml / Eau de Parfum</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-medium">1</td>
+<td class="px-8 py-6 text-right font-bold text-primary">$185.00</td>
+</tr>
+<tr>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container rounded-md overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="high-end designer sunglasses with dark lenses and gold frame accents shot against a clean cream background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqwF6ns-T-GBJSv-02pMvlWsrNI0jjftgq5x_JFq_Nso-NqQun40lbHZZaUdAUi9Hup-cmM9BaqQlUuUPZsRloyykxAVGu4BW88a2S3apQ9BJ4hN2OHht0x8mxCeUFhI0phqOhzJW5T2HsSDBVrx6HlpX2JBTjlESylqqT5mCfLYk0MTXY6EIjHEXg90R311TsBk9Luvy4Ki3_X6vLz0g8nN_Zf12wSKpASjvcr7vHPimsukX_xaLcxQ6V6tqY2AOCsYtFbgxGto9Z"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Aviator Eclipse</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider mt-1">Ref: 1205-X</p>
+<p class="text-sm text-secondary mt-1">Color: Midnight Gold</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-medium">1</td>
+<td class="px-8 py-6 text-right font-bold text-primary">$320.00</td>
+</tr>
+<tr>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container rounded-md overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="folded luxury white cotton t-shirt with premium texture and soft shadows on a minimalist wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMkjckPhNgo1-2nWbtrJ0kz5eBmljA5Zmgr235SvSFN38L3YCira1CPMQlbkkozLNix2Xp7cRgxK_1293Jd3ZMqt-vh4KbkesbnjSGgWy_a_VezhfzDAw0oYeHXPyKlA4D1uxE4WD1_3insaxeNwjiUVN3ZjxMiPNr0WMfyEtfUBt_vKTu-1P7uHpudk04aNHyE3q5jm58usTUaM5XaT-1Jd3gTFRdvaFbg-lNzQPrS89j-RIWFYH0QnUj8aAKtSqPByYuAm2sQbIG"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Supima Essential Tee</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider mt-1">Ref: 5501-E</p>
+<p class="text-sm text-secondary mt-1">Size: Large / Color: Ivory</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-medium">1</td>
+<td class="px-8 py-6 text-right font-bold text-primary">$85.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Tracking Detail Section -->
+<div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<h3 class="font-bold text-lg mb-1">Live Tracking Information</h3>
+<p class="text-on-surface-variant text-sm">Carrier: FedEx Global Express</p>
+</div>
+<div class="flex gap-4">
+<span class="px-4 py-2 bg-surface-container-lowest text-on-surface font-mono text-sm rounded border border-outline-variant/10 select-all">TRK-8829441029</span>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20">Track External</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Info (Descriptions Style) -->
+<aside class="space-y-8">
+<!-- Delivery & Payment Panels -->
+<div class="bg-surface-container-low p-8 rounded-xl space-y-8">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="location_on">location_on</span>
+                            Delivery Address
+                        </h3>
+<div class="text-on-surface leading-relaxed">
+<p class="font-bold">Julian Sterling</p>
+<p>842 Fifth Avenue, Apt 14C</p>
+<p>New York, NY 10065</p>
+<p>United States</p>
+<p class="text-sm text-on-surface-variant mt-2">+1 (212) 555-0198</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="credit_card">credit_card</span>
+                            Payment Method
+                        </h3>
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-surface-container-high rounded flex items-center justify-center font-bold italic text-xs tracking-tighter">VISA</div>
+<div>
+<p class="text-on-surface font-medium">Visa ending in 4492</p>
+<p class="text-xs text-on-surface-variant">Expires 12/26</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary -->
+<div class="bg-surface-container-high p-8 rounded-xl">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-6">Financial Summary</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-medium text-on-surface">$590.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Shipping (Express)</span>
+<span class="font-medium text-on-surface">$25.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Estimated Taxes</span>
+<span class="font-medium text-on-surface">$52.35</span>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/20 flex justify-between items-end">
+<span class="text-lg font-bold">Total Amount</span>
+<div class="text-right">
+<span class="block text-2xl font-black text-primary">$667.35</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Charged to Visa</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-4 bg-white hover:bg-surface-container-low text-primary border border-primary/20 rounded-full font-bold transition-colors">
+                        Download Invoice
+                    </button>
+</div>
+<!-- Support Card -->
+<div class="p-6 bg-tertiary-fixed rounded-xl flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="help_center">help_center</span>
+<div>
+<h4 class="font-bold text-on-tertiary-fixed text-sm">Need Assistance?</h4>
+<p class="text-xs text-on-tertiary-fixed-variant mt-1 leading-normal">Our concierges are available 24/7 to help with your shipment or product care questions.</p>
+<a class="inline-block mt-3 text-xs font-bold text-tertiary hover:underline" href="#">Contact Concierge</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-950 w-full border-t border-slate-200/20 flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-100">CURATED EDITORIAL.</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Sustainability</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Shipping</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Returns</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Privacy</a>
+</div>
+<div class="font-['Inter'] text-xs uppercase tracking-widest text-slate-400">© 2024 CURATED EDITORIAL. ALL RIGHTS RESERVED.</div>
+</footer>
+<!-- Floating Concierge Trigger (Editorial Style) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-surface-tint/90 backdrop-blur-md shadow-2xl flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="chat_bubble">chat_bubble</span>
+</button>
+</body></html>
+
+<!-- Order Details (Mobile) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details | Altos Commerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#dbe2f9",
+                        "on-primary-container": "#f3f3ff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface": "#141b2c",
+                        "on-secondary-fixed": "#0f1c2d",
+                        "secondary-container": "#d6e3fb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#832700",
+                        "tertiary-fixed": "#ffdbcf",
+                        "inverse-surface": "#293041",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-low": "#f1f3ff",
+                        "surface-container": "#e9edff",
+                        "secondary": "#525f73",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-container": "#fff1ed",
+                        "on-error": "#ffffff",
+                        "on-background": "#141b2c",
+                        "surface-variant": "#dbe2f9",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#390c00",
+                        "tertiary-container": "#c84000",
+                        "primary-container": "#0062ff",
+                        "inverse-on-surface": "#edf0ff",
+                        "background": "#f9f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#bac7de",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e0e8ff",
+                        "on-surface-variant": "#424656",
+                        "secondary-fixed": "#d6e3fb",
+                        "surface-dim": "#d2daf0",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0053da",
+                        "on-secondary-container": "#586579",
+                        "surface": "#f9f9ff",
+                        "tertiary": "#9e3100",
+                        "outline-variant": "#c2c6d9",
+                        "on-secondary-fixed-variant": "#3b485a",
+                        "tertiary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#dbe1ff",
+                        "primary": "#004cca",
+                        "outline": "#737687"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased pb-24">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#f9f9ff]/80 dark:bg-[#141b2c]/80 backdrop-blur-md flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#141b2c] cursor-pointer active:scale-95 duration-200">arrow_back</span>
+<span class="font-['Inter'] tracking-tight font-bold uppercase text-[#141b2c]">ORDER #88219</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#141b2c] cursor-pointer active:scale-95 duration-200">help_outline</span>
+<span class="material-symbols-outlined text-[#141b2c] cursor-pointer active:scale-95 duration-200">shopping_bag</span>
+</div>
+</header>
+<main class="pt-20 px-4 space-y-6">
+<!-- Order Hero Status -->
+<section class="bg-surface-container-lowest p-6 rounded-xl border-none">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-widest text-secondary font-label">Status</p>
+<h1 class="text-3xl font-black tracking-tighter text-on-surface">IN TRANSIT</h1>
+</div>
+<div class="bg-primary-container/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Your curated selection is on its way. Estimated arrival is <span class="font-bold text-on-surface">Oct 24, 2023</span>.</p>
+</section>
+<!-- Tracking Timeline -->
+<section class="bg-surface-container-low p-6 rounded-xl space-y-8">
+<h3 class="text-[10px] font-bold uppercase tracking-widest text-secondary font-label">Journey</h3>
+<div class="relative space-y-8">
+<!-- Vertical Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-outline-variant/30"></div>
+<!-- Step 4 (Current) -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center ring-4 ring-primary/20">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Out for delivery</p>
+<p class="text-xs text-on-surface-variant">Arrived at local sorting facility · 08:42 AM</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Departed hub</p>
+<p class="text-xs text-on-surface-variant">Logistics center East · Yesterday</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Curated &amp; Packed</p>
+<p class="text-xs text-on-surface-variant">Quality check complete · Oct 21</p>
+</div>
+</div>
+<!-- Step 1 -->
+<div class="relative flex gap-4 opacity-50">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Order Confirmed</p>
+<p class="text-xs text-on-surface-variant">Payment processed · Oct 20</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product List (Collapsible Design Pattern) -->
+<section class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<button class="w-full px-6 py-5 flex justify-between items-center group active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary font-label">ITEMS (3)</span>
+</div>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</button>
+<div class="px-6 pb-6 space-y-4">
+<!-- Item 1 -->
+<div class="flex gap-4 items-center">
+<div class="w-20 h-24 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="luxury minimal white leather sneakers on a soft beige studio background professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf7V43UASrG5GPZFdWdX4zxl8CVsfN2YeiDY1SbOy9-KC6iUi742UNlz_E1W-biShvHboOhHs5WFG_5tw_HtEhRz8oN6m7O9IhcHYqqrlWLQzfdLacW88ySenO4zkStynH9X_K01e4TK_0Ab7PTi2iF7bnCvmlIfjG1FLv0usU1RCf3nYU0IZOAmpiwmhnfpiRz2TR6hflC0lOawZJHxd3h2NTvOnzqgG0PyglFGC-ilRwX4FR0aBj0CgQEpeOycByYhKJHDD447NN"/>
+</div>
+<div class="flex-1 py-1">
+<p class="text-xs text-tertiary font-bold uppercase tracking-tighter">Limited Edition</p>
+<h4 class="text-sm font-bold text-on-surface">Monarch Silk Blazer</h4>
+<p class="text-xs text-on-surface-variant">Size: 42 · Midnight Blue</p>
+<div class="flex justify-between items-end mt-2">
+<p class="text-sm font-bold text-on-surface">$1,240.00</p>
+<span class="text-[10px] font-bold text-outline-variant uppercase">Qty: 1</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 items-center">
+<div class="w-20 h-24 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="high-end minimalist analog watch with silver casing and white face studio lighting soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxNov5K-lNPlGDUUaRHF735XJf-buUJCAowo-ZKsz4kpaX4vm1p11LeWEWj-qD7G1zePjETDdaknWAwdkqGfL57ZYK-q2c1rIKlVrAB0fQNDxHnGeLzpMy0Rm5WCE9MiXi1MJuQj6cQEuSQqBkeWkQ-6z03qploxgK0FEMzkU1XqYUSQaXU-dSx8MLPOF8YSifi8Nv_qe0METWD0D67QU1ipJiPIaMlvC3vIWYa1CwvLrihci7LcwOC-KpKsKU-fxIsSlKCDxZokd4"/>
+</div>
+<div class="flex-1 py-1">
+<p class="text-xs text-outline font-bold uppercase tracking-tighter">Core Collection</p>
+<h4 class="text-sm font-bold text-on-surface">Linear Chrono</h4>
+<p class="text-xs text-on-surface-variant">Size: OS · Silver/White</p>
+<div class="flex justify-between items-end mt-2">
+<p class="text-sm font-bold text-on-surface">$450.00</p>
+<span class="text-[10px] font-bold text-outline-variant uppercase">Qty: 1</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Shipping & Payment Details (Asymmetric Bento) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-5 rounded-xl space-y-3">
+<p class="text-[9px] font-black uppercase tracking-widest text-secondary font-label">Shipping To</p>
+<div class="text-xs text-on-surface leading-relaxed">
+<p class="font-bold">Julian Vane</p>
+<p>88 Luxury Ave, Suite 404</p>
+<p>New York, NY 10012</p>
+</div>
+</div>
+<div class="bg-surface-container-high p-5 rounded-xl space-y-3">
+<p class="text-[9px] font-black uppercase tracking-widest text-secondary font-label">Payment</p>
+<div class="flex items-center gap-2">
+<div class="w-8 h-5 bg-on-surface rounded-sm flex items-center justify-center">
+<div class="flex -space-x-1">
+<div class="w-2.5 h-2.5 rounded-full bg-[#EB001B] opacity-80"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#F79E1B] opacity-80"></div>
+</div>
+</div>
+<span class="text-xs font-bold text-on-surface">•••• 9012</span>
+</div>
+<p class="text-[10px] text-on-surface-variant">Mastercard Credit</p>
+</div>
+</div>
+<!-- Summary -->
+<section class="bg-surface-container-lowest p-6 rounded-xl space-y-3">
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>$1,690.00</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-primary font-bold">Complimentary</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Tax</span>
+<span>$142.12</span>
+</div>
+<div class="pt-3 mt-3 border-t border-outline-variant/10 flex justify-between items-baseline">
+<span class="text-sm font-bold text-on-surface">Total</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">$1,832.12</span>
+</div>
+</section>
+<!-- Support Actions -->
+<div class="grid grid-cols-1 gap-3">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-full font-bold text-sm tracking-wide active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+                Live Curator Support
+            </button>
+<button class="w-full bg-surface-container-high text-primary py-4 rounded-full font-bold text-sm tracking-wide active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+                Download Invoice
+            </button>
+<button class="w-full text-error py-4 font-bold text-sm tracking-wide active:opacity-60 transition-opacity">
+                Request Return
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-white dark:bg-[#141b2c] shadow-[0_-4px_20px_rgba(20,27,44,0.04)] z-50">
+<a class="flex flex-col items-center justify-center text-[#c2c6d9] dark:text-[#4a5568] hover:text-[#004cca] transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">SHOP</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c2c6d9] dark:text-[#4a5568] hover:text-[#004cca] transition-colors" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">CURATED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c2c6d9] dark:text-[#4a5568] hover:text-[#004cca] transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">BAG</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#004cca] dark:text-[#0062ff] font-extrabold scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">ACCOUNT</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Checkout (Web) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | CURATED</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#dbe2f9",
+                        "on-primary-container": "#f3f3ff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface": "#141b2c",
+                        "on-secondary-fixed": "#0f1c2d",
+                        "secondary-container": "#d6e3fb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#832700",
+                        "tertiary-fixed": "#ffdbcf",
+                        "inverse-surface": "#293041",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-low": "#f1f3ff",
+                        "surface-container": "#e9edff",
+                        "secondary": "#525f73",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-container": "#fff1ed",
+                        "on-error": "#ffffff",
+                        "on-background": "#141b2c",
+                        "surface-variant": "#dbe2f9",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#390c00",
+                        "tertiary-container": "#c84000",
+                        "primary-container": "#0062ff",
+                        "inverse-on-surface": "#edf0ff",
+                        "background": "#f9f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#bac7de",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e0e8ff",
+                        "on-surface-variant": "#424656",
+                        "secondary-fixed": "#d6e3fb",
+                        "surface-dim": "#d2daf0",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0053da",
+                        "on-secondary-container": "#586579",
+                        "surface": "#f9f9ff",
+                        "tertiary": "#9e3100",
+                        "outline-variant": "#c2c6d9",
+                        "on-secondary-fixed-variant": "#3b485a",
+                        "tertiary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#dbe1ff",
+                        "primary": "#004cca",
+                        "outline": "#737687"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .step-active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #004cca;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation (Shell suppressed for focused Checkout flow, simplified version used) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20 flex justify-between items-center px-8">
+<div class="text-2xl font-black tracking-tighter text-blue-800">CURATED</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-600">lock</span>
+<span class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500">Secure Checkout</span>
+</div>
+</header>
+<main class="pt-32 pb-24 px-4 md:px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Column: Checkout Steps & Forms -->
+<div class="lg:col-span-8">
+<!-- Editorial Step Progress -->
+<nav class="flex items-center justify-start gap-8 mb-16 overflow-x-auto pb-4">
+<div class="flex items-center gap-3 relative pb-2 step-active">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold">1</span>
+<span class="font-['Inter'] text-sm uppercase tracking-widest font-bold text-primary">Shipping</span>
+</div>
+<div class="w-12 h-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-3 opacity-40">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold">2</span>
+<span class="font-['Inter'] text-sm uppercase tracking-widest">Payment</span>
+</div>
+<div class="w-12 h-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-3 opacity-40">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold">3</span>
+<span class="font-['Inter'] text-sm uppercase tracking-widest">Review</span>
+</div>
+</nav>
+<!-- Section: Shipping Information -->
+<section>
+<h2 class="text-3xl font-headline font-bold tracking-tight mb-8">Shipping Information</h2>
+<form class="space-y-12">
+<!-- Name Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">First Name</label>
+<input class="bg-surface-container-low border-0 border-b border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface placeholder:text-slate-400" placeholder="e.g. Julian" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">Last Name</label>
+<input class="bg-surface-container-low border-0 border-b border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface placeholder:text-slate-400" placeholder="e.g. Thorne" type="text"/>
+</div>
+</div>
+<!-- Address Row -->
+<div class="flex flex-col gap-2">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">Street Address</label>
+<input class="bg-surface-container-low border-0 border-b border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface placeholder:text-slate-400" placeholder="123 Gallery Lane, Suite 400" type="text"/>
+</div>
+<!-- City/Zip/Country Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">City</label>
+<input class="bg-surface-container-low border-0 border-b border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface placeholder:text-slate-400" placeholder="New York" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">Zip Code</label>
+<input class="bg-surface-container-low border-0 border-b border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface placeholder:text-slate-400" placeholder="10012" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">Country</label>
+<select class="bg-surface-container-low border-0 border-b border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface appearance-none">
+<option>United States</option>
+<option>United Kingdom</option>
+<option>France</option>
+<option>Japan</option>
+</select>
+</div>
+</div>
+<!-- Shipping Method Selection -->
+<div class="pt-8">
+<label class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 block mb-6">Delivery Method</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="group cursor-pointer relative p-6 bg-surface-container-lowest border-2 border-primary rounded-xl flex items-center justify-between">
+<input checked="" class="hidden" name="shipping" type="radio"/>
+<div>
+<p class="font-bold text-on-surface">Standard Courier</p>
+<p class="text-sm text-slate-500">3-5 business days</p>
+</div>
+<span class="text-primary font-bold">Free</span>
+</label>
+<label class="group cursor-pointer relative p-6 bg-surface-container-low hover:bg-surface-container-highest transition-colors rounded-xl flex items-center justify-between">
+<input class="hidden" name="shipping" type="radio"/>
+<div>
+<p class="font-bold text-on-surface">Express Editorial</p>
+<p class="text-sm text-slate-500">Next day delivery</p>
+</div>
+<span class="text-on-surface font-bold">$25.00</span>
+</label>
+</div>
+</div>
+<div class="pt-8">
+<button class="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-3">
+                                Continue to Payment
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</form>
+</section>
+</div>
+<!-- Right Column: Order Summary (Sticky) -->
+<div class="lg:col-span-4">
+<div class="sticky top-32 p-8 bg-surface-container-low rounded-2xl">
+<h3 class="text-xl font-headline font-bold tracking-tight mb-8">Order Summary</h3>
+<!-- Item List -->
+<div class="space-y-6 mb-8">
+<div class="flex gap-4">
+<div class="w-20 h-24 bg-surface-container-lowest rounded-md overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist high-end leather sneaker in off-white on a soft grey studio background with editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWEDGxRu6ZtKqykJ8Izq3Z_aur2tw4aZp_jjzLCfIsuV91oieh06zXmALq6DbikAjzPJy1uKDi3K0CDIZGH8zM0HhSecJs_0hIbEcqt5CQp2EUU94V7veNDfcY48Ir_E_rmMcaDO2Wy1sjQigtBqgJwnjpsWPNdMKWSHllB3omcdmDp8A4G3zSS1tnfD0-vBU4sFmogs5Ka3sMrnS3NpJ9Ci2nEiQbEVY7-fpZ1ZALJrSWvvz_pY_ANB1ozSoUhAJ0eON55nKBxmZq"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="text-sm font-bold text-on-surface">Linear Leather Sneaker</p>
+<p class="text-xs text-slate-500">Cream / 42</p>
+</div>
+<p class="text-sm font-['Inter'] font-medium text-primary">$320.00</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-20 h-24 bg-surface-container-lowest rounded-md overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="heavyweight structured cotton t-shirt in charcoal grey folded neatly on a textured white surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhIGCRtK3Dj83ii-e8OYQFJguHySdYewekmMD_PXaKdM9wJGHL4FQ6TAJr6mBly_1jmrL-nxPa6-JgdMXqtb1Q6LCETg-A8FfFik9gXhEGGIqL50ny9e2L9UBK0hYMUgMINAMX5RPfInLdSU4iLNXpMm9DLWCyMWlI4m5Au5QtXrb6VAWB4sfpk_BHBtNTO3AzLbppy_nNeT31ywgZc7dNRu31cFjM8Xwtw3DQp_Rg_vhI-CdZfUXA3l5WUJXrJBP4EfuZvY1yc9EY"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="text-sm font-bold text-on-surface">Structured Tee</p>
+<p class="text-xs text-slate-500">Charcoal / M</p>
+</div>
+<p class="text-sm font-['Inter'] font-medium text-primary">$85.00</p>
+</div>
+</div>
+</div>
+<!-- Totals -->
+<div class="border-t border-outline-variant/20 pt-8 space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 uppercase tracking-widest text-[10px]">Subtotal</span>
+<span class="text-on-surface font-medium">$405.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 uppercase tracking-widest text-[10px]">Shipping</span>
+<span class="text-on-surface font-medium">Free</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 uppercase tracking-widest text-[10px]">Estimated Tax</span>
+<span class="text-on-surface font-medium">$32.40</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant/20">
+<span class="text-on-surface font-bold uppercase tracking-widest text-xs">Total</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">$437.40</span>
+</div>
+</div>
+<!-- Editorial Content/Support -->
+<div class="mt-12 p-6 bg-surface-container-lowest rounded-xl border border-primary/5">
+<div class="flex items-center gap-3 mb-3 text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] font-bold">Curated Benefits</span>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed">
+                            Every order arrives in our signature sustainable gallery packaging with a certificate of authenticity.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-950 w-full border-t border-slate-200/20 flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-100">CURATED</div>
+<div class="flex gap-12 font-['Inter'] text-sm uppercase tracking-widest">
+<a class="text-slate-500 hover:underline underline-offset-4 opacity-80 hover:opacity-100 transition-colors" href="#">Sustainability</a>
+<a class="text-slate-500 hover:underline underline-offset-4 opacity-80 hover:opacity-100 transition-colors" href="#">Shipping</a>
+<a class="text-slate-500 hover:underline underline-offset-4 opacity-80 hover:opacity-100 transition-colors" href="#">Returns</a>
+</div>
+<p class="text-slate-500 dark:text-slate-400 font-['Inter'] text-sm uppercase tracking-widest">© 2024 CURATED EDITORIAL. ALL RIGHTS RESERVED.</p>
+</footer>
+<!-- Floating Help Trigger -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-surface-container-highest/80 backdrop-blur-md rounded-full shadow-2xl flex items-center justify-center text-primary transition-transform hover:scale-110 z-50">
+<span class="material-symbols-outlined">question_answer</span>
+</button>
+</body></html>
+
+<!-- Checkout (Mobile) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Altos Commerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#dbe2f9",
+              "on-primary-container": "#f3f3ff",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "on-surface": "#141b2c",
+              "on-secondary-fixed": "#0f1c2d",
+              "secondary-container": "#d6e3fb",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface-bright": "#f9f9ff",
+              "on-tertiary-fixed-variant": "#832700",
+              "tertiary-fixed": "#ffdbcf",
+              "inverse-surface": "#293041",
+              "inverse-primary": "#b4c5ff",
+              "surface-container-low": "#f1f3ff",
+              "surface-container": "#e9edff",
+              "secondary": "#525f73",
+              "on-primary-fixed": "#00174b",
+              "on-tertiary-container": "#fff1ed",
+              "on-error": "#ffffff",
+              "on-background": "#141b2c",
+              "surface-variant": "#dbe2f9",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#390c00",
+              "tertiary-container": "#c84000",
+              "primary-container": "#0062ff",
+              "inverse-on-surface": "#edf0ff",
+              "background": "#f9f9ff",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#bac7de",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e0e8ff",
+              "on-surface-variant": "#424656",
+              "secondary-fixed": "#d6e3fb",
+              "surface-dim": "#d2daf0",
+              "on-error-container": "#93000a",
+              "surface-tint": "#0053da",
+              "on-secondary-container": "#586579",
+              "surface": "#f9f9ff",
+              "tertiary": "#9e3100",
+              "outline-variant": "#c2c6d9",
+              "on-secondary-fixed-variant": "#3b485a",
+              "tertiary-fixed-dim": "#ffb59c",
+              "primary-fixed": "#dbe1ff",
+              "primary": "#004cca",
+              "outline": "#737687"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface mb-24">
+<!-- Top Navigation -->
+<nav class="bg-[#f9f9ff]/80 backdrop-blur-md fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">arrow_back</span>
+<h1 class="font-['Inter'] tracking-tight font-bold uppercase text-lg text-on-surface">CHECKOUT</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">shopping_bag</span>
+</div>
+</nav>
+<main class="pt-24 px-4 max-w-md mx-auto">
+<!-- Ant Design Style Steps Component (Mobile Vertical) -->
+<div class="flex flex-col gap-0 mb-8 px-2">
+<!-- Step 1: Active -->
+<div class="flex gap-4 items-start group">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold ring-4 ring-primary/10">1</div>
+<div class="w-0.5 h-12 bg-primary/20 my-1"></div>
+</div>
+<div class="pt-1">
+<span class="text-xs font-bold text-primary tracking-widest uppercase">Step 01</span>
+<h3 class="text-sm font-extrabold text-on-surface">SHIPPING</h3>
+</div>
+</div>
+<!-- Step 2: Pending -->
+<div class="flex gap-4 items-start group opacity-40">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-xs font-bold">2</div>
+<div class="w-0.5 h-12 bg-primary/10 my-1"></div>
+</div>
+<div class="pt-1">
+<span class="text-xs font-bold text-on-surface-variant tracking-widest uppercase">Step 02</span>
+<h3 class="text-sm font-extrabold text-on-surface">PAYMENT</h3>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex gap-4 items-start group opacity-40">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-xs font-bold">3</div>
+</div>
+<div class="pt-1">
+<span class="text-xs font-bold text-on-surface-variant tracking-widest uppercase">Step 03</span>
+<h3 class="text-sm font-extrabold text-on-surface">REVIEW</h3>
+</div>
+</div>
+</div>
+<!-- Section 1: Shipping Details (Active State) -->
+<section class="bg-surface-container-lowest p-6 rounded-xl space-y-6">
+<header class="flex justify-between items-end">
+<div>
+<span class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Identity</span>
+<h2 class="text-xl font-black tracking-tight text-on-surface">SHIPPING INFO</h2>
+</div>
+<span class="material-symbols-outlined text-outline-variant">edit_note</span>
+</header>
+<div class="space-y-4">
+<div class="group">
+<label class="block text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Full Name</label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary text-on-surface font-medium px-0 py-2 transition-colors" type="text" value="Julianne Sterling"/>
+</div>
+<div class="group">
+<label class="block text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Street Address</label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary text-on-surface font-medium px-0 py-2 transition-colors" type="text" value="882 Lexicon Avenue, Apt 4B"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="group">
+<label class="block text-[10px] font-bold text-outline uppercase tracking-wider mb-1">City</label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary text-on-surface font-medium px-0 py-2 transition-colors" type="text" value="New York"/>
+</div>
+<div class="group">
+<label class="block text-[10px] font-bold text-outline uppercase tracking-wider mb-1">ZIP Code</label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary text-on-surface font-medium px-0 py-2 transition-colors" type="text" value="10021"/>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-full text-xs uppercase tracking-widest active:scale-95 transition-transform">
+                    Continue to Payment
+                </button>
+</div>
+</section>
+<!-- Section 2: Payment (Collapsed) -->
+<section class="mt-4 bg-surface-container-low p-6 rounded-xl opacity-60">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">payments</span>
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Payment Method</span>
+</div>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</section>
+<!-- Order Summary Section (Asymmetric Editorial Style) -->
+<section class="mt-12 mb-8">
+<div class="flex items-baseline gap-2 mb-6">
+<h2 class="text-2xl font-black text-on-surface">YOUR BAG</h2>
+<span class="text-xs font-bold text-outline-variant uppercase">(02 ITEMS)</span>
+</div>
+<div class="space-y-8">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="w-24 h-32 bg-surface-container-high rounded-md overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Premium leather minimalist sneakers in off-white on a neutral stone background with soft editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6N-qpe-HJw3YeHWMXSu6k6d3AMFuhKeiWUW4Wp4mq3mnnq9qzXuiIKznLssycsNUH4GVsMF-Ya0BGUooaeKRISQpU6lVrj7soPMve8NXwDDlSkS372Y6GcNMsbU73QI7FVKaCpJk1Gy8DCn6Ld64488yFNIyF-SzCX-zL6vOak8MuU0uoB5GP0UPLnq6vd4FnQkMi7mfwWbdzcz4CNeKksXkMTFa9q49rGo69IXehSQmccpFuoBTL0crB1YqE_dQTgkfZGNT4u6nN"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<span class="text-[10px] font-bold text-tertiary tracking-widest uppercase">Curated</span>
+<h4 class="text-sm font-extrabold text-on-surface leading-tight mt-1">SERIES 01 LEATHER SNEAKER</h4>
+<p class="text-xs text-outline font-medium mt-1">Size: 42 | Bone White</p>
+</div>
+<span class="text-sm font-black text-on-surface">$240.00</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="w-24 h-32 bg-surface-container-high rounded-md overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Luxury structured wool coat in deep charcoal gray displayed in a high-fashion studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8kJIRCQt0ztq3CJM0-tAmxfIEkoJDUW62sD4xIpylOFHvx4ucOoWUZi_Iknu32vn5AbG6VG-Z4eOFo3Vq_0mF3QrND27O8lK1avazUv66MNWI04-76WrWE1iYiJoZCld6-liprAaxjJR-9O1MnIpqRzhS8Ejmb0TmRBHfE2zBfMU11BE40fHRdYZqmTKSgDJoOkLAUbl5X03bEQHQISzAjrm_oi0eTTTE8mcT-hcZs5hWob9EJnxAdHhGeJQ3KmhkaFo9gWB5KI7H"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">Essential</span>
+<h4 class="text-sm font-extrabold text-on-surface leading-tight mt-1">STRUCTURED WOOL OVERCOAT</h4>
+<p class="text-xs text-outline font-medium mt-1">Size: M | Charcoal</p>
+</div>
+<span class="text-sm font-black text-on-surface">$850.00</span>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/10 space-y-3">
+<div class="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-outline">
+<span>Subtotal</span>
+<span>$1,090.00</span>
+</div>
+<div class="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-outline">
+<span>Shipping</span>
+<span class="text-primary">Complimentary</span>
+</div>
+<div class="flex justify-between items-center pt-4">
+<span class="text-sm font-black uppercase tracking-widest">Total</span>
+<span class="text-xl font-black text-on-surface">$1,090.00</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Fixed) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-[#ffffff] dark:bg-[#141b2c] shadow-[0_-4px_20px_rgba(20,27,44,0.04)] z-50">
+<div class="flex flex-col items-center justify-center text-[#c2c6d9] dark:text-[#4a5568] hover:text-[#004cca] transition-colors">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">SHOP</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#c2c6d9] dark:text-[#4a5568] hover:text-[#004cca] transition-colors">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">CURATED</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#004cca] font-extrabold scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">BAG</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#c2c6d9] dark:text-[#4a5568] hover:text-[#004cca] transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-[0.05em] mt-1">ACCOUNT</span>
+</div>
+</nav>
+<!-- Success Message Floating (Hidden by default) -->
+<div class="hidden fixed top-20 inset-x-4 bg-primary text-on-primary p-4 rounded-xl shadow-2xl flex items-center gap-4 z-[60]">
+<span class="material-symbols-outlined">check_circle</span>
+<div>
+<p class="text-xs font-black uppercase tracking-widest">Shipping Updated</p>
+<p class="text-[10px] opacity-80">Your address has been verified successfully.</p>
+</div>
+</div>
+</body></html>

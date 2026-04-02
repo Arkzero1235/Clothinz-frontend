@@ -1,0 +1,28 @@
+<section class="orders-section">
+      <div class="section-head">
+        <h2>Recent Orders</h2>
+        <a href="#" class="view-all">View All Orders</a>
+      </div>
+      <div class="orders-list">
+        @for (o of orders; track o.id) {
+          <div class="order-row">
+            <div class="order-product">
+              <div class="order-thumb"><img [src]="o.image" [alt]="o.name" /></div>
+              <div>
+                <p class="order-id">Order {{ o.id }}</p>
+                <h3>{{ o.name }}</h3>
+              </div>
+            </div>
+            <div class="order-meta">
+              <p class="meta-lbl">Ordered On</p>
+              <p class="meta-val">{{ o.date }}</p>
+            </div>
+            <div class="order-status">
+              <p class="meta-lbl">Status</p>
+              <nz-tag [nzColor]="o.color">{{ o.status }}</nz-tag>
+            </div>
+            <div class="order-price"><p>{{ o.price }}</p></div>
+          </div>
+        }
+      </div>
+    </section>

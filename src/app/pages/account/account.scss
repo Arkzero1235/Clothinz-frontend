@@ -1,0 +1,50 @@
+// ── Page layout ──────────────────────────────────────────────────────────────
+.acc-main { 
+  padding: 4rem 0; 
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  @media (max-width: 768px) { padding: 2rem 0; }
+}
+
+.acc-header {
+  margin-bottom: 4rem;
+  padding: 0 1rem; // Add side padding if not inside page-container
+  @media (max-width: 768px) { margin-bottom: 2.5rem; }
+
+  h1 { 
+    font-size: 2.75rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .5rem; 
+    @media (max-width: 768px) { font-size: 1.875rem; }
+  }
+  p  { color: var(--on-surface-variant); max-width: 42rem; line-height: 1.6; font-size: 1rem; }
+}
+
+.acc-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  width: 100%;
+  min-width: 0; // Crucial for grid to not expand
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 100%;
+    gap: 2rem;
+  }
+}
+
+// ── Content wrapper ───────────────────────────────────────────────────────────
+.acc-content { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 4rem; 
+  width: 100%;
+  max-width: 800px; /* Reduced from 900px for a more compact, premium look */
+  min-width: 0;
+  padding: 0 1rem; /* Add some internal breathing room */
+  
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    padding: 0;
+  }
+}

@@ -1,0 +1,107 @@
+.filter-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        gap: 0;
+        background: #f4f3f3;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+}
+
+.mobile-toggle {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: #efeded;
+    border: none;
+    cursor: pointer;
+    color: #1b1c1c;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    .material-symbols-outlined {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+        &.rotate { transform: rotate(180deg); }
+    }
+
+    .ms-auto { margin-left: auto; }
+
+    @media (max-width: 1024px) {
+        display: flex;
+    }
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media (max-width: 1024px) {
+        display: none;
+        padding: 1.5rem;
+        &.expanded {
+            display: flex;
+        }
+    }
+}
+
+.filter-group h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #dcd7cc;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #bfc7d5;
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #828a9a;
+    margin-top: 0.5rem;
+}
+
+.brand-radios {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rating-filter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star-on {
+    color: #facc15;
+    font-size: 20px;
+}
+
+.star-off {
+    color: #828a9a;
+    font-size: 20px;
+}
+
+.rating-label {
+    color: #bfc7d5;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}

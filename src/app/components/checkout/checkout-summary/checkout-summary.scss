@@ -1,0 +1,51 @@
+.checkout-summary-container {
+  background-color: #f7f9fd; // Subtle periwinkle-gray
+  min-height: 400px;
+
+  .summary-title {
+    font-size: 1.25rem;
+    font-weight: 850;
+    color: #1a202c;
+    letter-spacing: -0.02em;
+  }
+
+  .product-thumb {
+    width: 60px;
+    height: 80px;
+    border-radius: 6px;
+    background: #fff;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  }
+
+  .total-price-large {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1a202c;
+    line-height: 0.8;
+  }
+
+  .benefits-box {
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      background: #eff6ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+    }
+    
+    h5 {
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 0;
+    margin-top: 2rem;
+    padding: 2.5rem 1.5rem;
+  }
+}

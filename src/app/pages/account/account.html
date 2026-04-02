@@ -1,0 +1,33 @@
+<main class="page-container acc-main">
+  <header class="acc-header">
+    <h1>Account Dashboard</h1>
+    <p>Manage your personal information, track recent orders, and customize your Clothinz experience.</p>
+  </header>
+
+  <div class="acc-layout">
+    <!-- Sidebar -->
+    <app-account-sidebar [(active)]="active" />
+
+    <!-- Content -->
+    <div class="acc-content">
+      @switch (active) {
+        @case ('profile') {
+          <app-account-info-card />
+        }
+        @case ('orders') {
+          <app-account-order-history [orders]="orders" />
+        }
+        @case ('notifications') {
+          <app-account-settings-grid 
+            mode="notifications"
+            [(orderUpdates)]="orderUpdates" 
+            [(newsletter)]="newsletter" />
+        }
+        @case ('security') {
+          <app-account-settings-grid mode="security" />
+          <app-account-danger-zone />
+        }
+      }
+    </div>
+  </div>
+</main>

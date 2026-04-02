@@ -1,0 +1,20 @@
+<nav class="checkout-stepper">
+  <div class="step" [class.active]="activeStep === 'shipping'" (click)="setStep('shipping')">
+    <div class="step-num">1</div>
+    <span class="step-lbl">Shipping</span>
+  </div>
+  
+  <div class="step-line"></div>
+  
+  <div class="step" [class.active]="activeStep === 'payment'" [class.disabled]="activeStep === 'shipping' && !canNavigateTo('payment')" (click)="setStep('payment')">
+    <div class="step-num">2</div>
+    <span class="step-lbl">Payment</span>
+  </div>
+  
+  <div class="step-line"></div>
+  
+  <div class="step" [class.active]="activeStep === 'review'" [class.disabled]="activeStep !== 'review' && !canNavigateTo('review')" (click)="setStep('review')">
+    <div class="step-num">3</div>
+    <span class="step-lbl">Review</span>
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+<main class="page-container collections-main">
+  <!-- Editorial Header -->
+  <section class="editorial-header">
+    <h1>Summer Collections</h1>
+    <p>Explore our curated selection of architectural silhouettes and seasonal textures, designed for the modern metropolitan life.</p>
+  </section>
+
+  <div class="collections-layout">
+    <!-- Filter Sidebar -->
+    <app-collections-filter-sidebar
+      [(categories)]="categories"
+      [(priceRange)]="priceRange"
+      [(selectedBrand)]="selectedBrand"
+    />
+
+    <!-- Products -->
+    <app-collections-products-area
+      [products]="products"
+      [(sortBy)]="sortBy"
+      [(currentPage)]="currentPage"
+    />
+  </div>
+</main>

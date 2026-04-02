@@ -1,0 +1,16 @@
+<aside class="acc-sidebar">
+  <div class="sidebar-nav">
+    <button class="nav-item" [class.active]="active === 'profile'" (click)="onSectionChange('profile')">
+      <span class="material-symbols-outlined">person</span><span>Profile Details</span>
+    </button>
+    <button class="nav-item" [class.active]="active === 'orders'" (click)="onSectionChange('orders')">
+      <span class="material-symbols-outlined">local_shipping</span><span>Order History</span>
+    </button>
+    <button class="nav-item" [class.active]="active === 'notifications'" (click)="onSectionChange('notifications')">
+      <span class="material-symbols-outlined">notifications</span><span>Notifications</span>
+    </button>
+    <button class="nav-item" [class.active]="active === 'security'" (click)="onSectionChange('security')">
+      <span class="material-symbols-outlined">security</span><span>Password &amp; Security</span>
+    </button>
+  </div>
+</aside>

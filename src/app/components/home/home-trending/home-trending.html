@@ -1,0 +1,36 @@
+<section class="trending">
+  <div class="page-container">
+    <div class="trending-header">
+      <div>
+        <h2>Currently Trending</h2>
+        <p>The pieces everyone is talking about this week.</p>
+      </div>
+      <a routerLink="/collections" class="view-all-btn">
+        View All Products <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+    <div class="product-grid">
+      @for (p of products; track p.id) {
+      <div class="product-card" [routerLink]="['/product', p.id]">
+        <div class="product-img">
+          <img [src]="p.image" [alt]="p.name" />
+          @if (p.isNew) { <span class="badge-new">New</span> }
+          <button class="btn-fav" (click)="$event.stopPropagation()">
+            <span class="material-symbols-outlined">favorite</span>
+          </button>
+        </div>
+        <div class="product-info">
+          <p class="prod-category">{{ p.category }}</p>
+          <h4>{{ p.name }}</h4>
+          <div class="prod-price-row">
+            <span class="prod-price">{{ p.price }}</span>
+            <button class="btn-cart" (click)="$event.stopPropagation()">
+              <span class="material-symbols-outlined">add_shopping_cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

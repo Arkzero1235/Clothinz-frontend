@@ -1,0 +1,17 @@
+<section class="newsletter page-container">
+      <div class="newsletter-card">
+        <div class="newsletter-text">
+          <h2>Join the Clothinz Circle</h2>
+          <p>Receive exclusive early access to new collections and editorial insights delivered to your inbox.</p>
+        </div>
+        <div class="newsletter-form">
+          <nz-input-group [nzAddOnAfter]="subBtn">
+            <input nz-input type="email" placeholder="Email address" [ngModel]="newsletterEmail" (ngModelChange)="newsletterEmailChange.emit($event)" />
+          </nz-input-group>
+          <ng-template #subBtn>
+            <button nz-button class="sub-btn" type="submit">Subscribe</button>
+          </ng-template>
+          <p class="disclaimer">By subscribing, you agree to our Terms of Service and Privacy Policy.</p>
+        </div>
+      </div>
+    </section>

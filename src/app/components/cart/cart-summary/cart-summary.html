@@ -1,0 +1,40 @@
+<div class="summary-card">
+  <h3 class="summary-title">FINANCIAL SUMMARY</h3>
+  
+  <div class="summary-content">
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <span>${{ subtotal | number:'1.2-2' }}</span>
+    </div>
+    
+    <div class="summary-row">
+      <span>Shipping (Express)</span>
+      <span *ngIf="shipping > 0">${{ shipping | number:'1.2-2' }}</span>
+      <span class="text-primary uppercase" *ngIf="shipping === 0">Complimentary</span>
+    </div>
+    
+    <div class="summary-row">
+      <span>Estimated Taxes</span>
+      <span>${{ tax | number:'1.2-2' }}</span>
+    </div>
+    
+    <div class="spacer"></div>
+    
+    <div class="total-section">
+      <span class="total-label">Total Amount</span>
+      <div class="text-right">
+        <span class="total-price">${{ total | number:'1.2-2' }}</span>
+        <span class="tax-note">FINAL CURATION TAX INCLUDED</span>
+      </div>
+    </div>
+  </div>
+
+  <button nz-button nzBlock routerLink="/checkout" class="action-btn">
+    Proceed to Checkout
+  </button>
+  
+  <p class="secure-note">
+    <span class="material-symbols-outlined">lock</span>
+    SECURE CHECKOUT & PREMIUM LOGISTICS
+  </p>
+</div>
