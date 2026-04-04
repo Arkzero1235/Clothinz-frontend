@@ -63,7 +63,8 @@ export class ProductCategory implements OnInit {
 
     this.categoryApi.getAll().subscribe({
       next: (response) => {
-        const found = response.data.data.find(c => c.id === catId);
+        const sortedCategories = [...response.data.data].sort((a, b) => a.id - b.id);
+        const found = sortedCategories.find(c => c.id === catId);
         if (found) {
           this.category.set(found);
         }
@@ -86,10 +87,36 @@ export class ProductCategory implements OnInit {
       sort: 'name:asc'
     }).subscribe({
       next: (response) => {
-        this.productList.set(response.data.data);
-        if (response.data.meta) {
-          this.totalPages.set(response.data.meta.totalPages || 1);
-        }
+        const payload = response.data as {
+          data?: Product[];
+          results?: Product[];
+          total?: number;
+          limit?: number;
+          totalPages?: number;
+          meta?: {
+            total?: number;
+            limit?: number;
+            totalPages?: number;
+          };
+        };
+
+        const items = payload.data ?? payload.results ?? [];
+        this.productList.set(items);
+
+        const totalPagesFromMeta = payload.meta?.totalPages;
+        const totalPagesFromRoot = payload.totalPages;
+        const totalFromMeta = payload.meta?.total;
+        const totalFromRoot = payload.total;
+        const effectiveLimit = payload.meta?.limit ?? payload.limit ?? this.limit();
+
+        const calculatedTotalPages =
+          totalPagesFromMeta ??
+          totalPagesFromRoot ??
+          (typeof totalFromMeta === 'number' ? Math.ceil(totalFromMeta / effectiveLimit) : undefined) ??
+          (typeof totalFromRoot === 'number' ? Math.ceil(totalFromRoot / effectiveLimit) : 1);
+
+        this.totalPages.set(Math.max(1, calculatedTotalPages));
+
         this.loading.set(false);
       },
       error: (err) => {

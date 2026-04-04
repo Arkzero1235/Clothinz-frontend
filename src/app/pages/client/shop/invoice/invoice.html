@@ -57,7 +57,7 @@
         </div>    
         <div class="max-w-[800px] mx-auto rounded-b-[30px] w-full bg-invoice dark:bg-dark-secondary pt-[30px] px-4 md:px-[40px] pb-[30px] md:pb-[40px] border border-[#17243026] dark:border-bdr-clr-drk border-opacity-15">
             <div class="border-t-dashed block border-dashed border-title pb-[30px] aos-init aos-animate">
-                <!-- Desktop Table -->
+    
                 <div class="hidden md:block overflow-x-auto">
                     <table class="min-w-full">
                         <thead>
@@ -100,7 +100,6 @@
                     </table>
                 </div>
 
-                <!-- Mobile Card List -->
                 <div class="md:hidden space-y-4">
                     @for (item of order()!.previews; track item.productId) {
                         <div class="flex gap-4 py-4 border-b border-dashed border-title dark:border-bdr-clr-drk last:border-0">

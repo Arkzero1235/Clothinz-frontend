@@ -829,5 +829,18 @@
     "selectDistrict": "Select District",
     "ward": "Ward/Commune",
     "selectWard": "Select Ward/Commune"
+  },
+  "chatbot": {
+    "title": "AI Assistant",
+    "subtitle": "Ask me anything!",
+    "welcome": "Feel free to ask me questions!",
+    "emptyAnswer": "Sorry, no response available.",
+    "error": "Sorry, there was a connection error.",
+    "processing": "AI is typing...",
+    "inputPlaceholder": "Type your message...",
+    "send": "Send",
+    "openLabel": "Open Chat",
+    "closeLabel": "Close Chat",
+    "stock": "Stock"
   }
 }

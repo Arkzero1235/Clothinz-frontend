@@ -65,6 +65,8 @@ export class ShopComponent {
   readonly totalPages = signal(1);
   readonly selectedCategories = signal<Set<number>>(new Set());
   readonly sortOption = signal<'price:ASC' | 'price:DESC' | 'name:ASC' | 'updatedAt:DESC' | 'updatedAt:ASC'>('updatedAt:DESC');
+  readonly baselinePriceMin = signal<number | null>(null);
+  readonly baselinePriceMax = signal<number | null>(null);
   
   readonly categories = signal<Category[]>([]);
   readonly loadingCategories = signal(true);
@@ -94,8 +96,15 @@ export class ShopComponent {
     });
     
     effect(() => {
-      const _ = this.value();
-      const __ = this.highValue();
+      const min = this.value();
+      const max = this.highValue();
+
+      if (this.baselinePriceMin() === null || this.baselinePriceMax() === null) {
+        this.baselinePriceMin.set(min);
+        this.baselinePriceMax.set(max);
+        return;
+      }
+
       this.priceChangeSubject.next();
     });
   }
@@ -104,7 +113,7 @@ export class ShopComponent {
     this.loadingCategories.set(true);
     this.categoryApi.getAll().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response) => {
-        this.categories.set(response.data.data);
+        this.categories.set([...response.data.data].sort((a, b) => a.id - b.id));
         this.loadingCategories.set(false);
       },
       error: (err) => {
@@ -135,17 +144,49 @@ export class ShopComponent {
 
     apiCall.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response) => {
+        const payload = response.data as {
+          data?: Product[];
+          results?: Product[];
+          total?: number;
+          limit?: number;
+          totalPages?: number;
+          meta?: {
+            total?: number;
+            limit?: number;
+            totalPages?: number;
+          };
+        };
+
+        const items = payload.data ?? payload.results ?? [];
         const minPrice = this.value();
         const maxPrice = this.highValue();
-        const filteredProducts = response.data.data.filter(product => 
-          product.price >= minPrice && product.price <= maxPrice
-        );
+        const priceOptions = this.options();
+        const tolerance = priceOptions.step ?? 0;
+        const baselineMin = this.baselinePriceMin() ?? minPrice;
+        const baselineMax = this.baselinePriceMax() ?? maxPrice;
+        const shouldApplyPriceFilter =
+          Math.abs(minPrice - baselineMin) > tolerance ||
+          Math.abs(maxPrice - baselineMax) > tolerance;
+        const filteredProducts = shouldApplyPriceFilter
+          ? items.filter(product => product.price >= minPrice && product.price <= maxPrice)
+          : items;
 
-        const reversedProducts = [...filteredProducts].sort((a, b) => b.id - a.id);
-        this.productList.set(reversedProducts);
-        if (response.data.meta) {
-          this.totalPages.set(response.data.meta.totalPages || 1);
-        }
+        this.productList.set(filteredProducts);
+
+        const totalPagesFromMeta = payload.meta?.totalPages;
+        const totalPagesFromRoot = payload.totalPages;
+        const totalFromMeta = payload.meta?.total;
+        const totalFromRoot = payload.total;
+        const effectiveLimit = payload.meta?.limit ?? payload.limit ?? this.limit();
+
+        const calculatedTotalPages =
+          totalPagesFromMeta ??
+          totalPagesFromRoot ??
+          (typeof totalFromMeta === 'number' ? Math.ceil(totalFromMeta / effectiveLimit) : undefined) ??
+          (typeof totalFromRoot === 'number' ? Math.ceil(totalFromRoot / effectiveLimit) : 1);
+
+        this.totalPages.set(Math.max(1, calculatedTotalPages));
+
         this.loading.set(false);
       },
       error: (err) => {

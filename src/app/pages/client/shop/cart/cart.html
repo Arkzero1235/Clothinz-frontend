@@ -22,7 +22,6 @@
             </div>
         } @else {
         <div class="flex xl:flex-row flex-col gap-[30px] lg:gap-[30px] xl:gap-[70px]">
-            <!-- Desktop Table -->
             <div class="flex-1 overflow-auto hidden md:block">
                 <table id="cart-table" class="responsive nowrap table-wrapper" style="width:100%">
                     <thead class="table-header">
@@ -88,7 +87,6 @@
                 </table>
             </div>
 
-            <!-- Mobile Cart List -->
             <div class="flex-1 md:hidden space-y-4">
                 @for (item of cartStore.items(); track item.id) {
                     <div class="bg-snow dark:bg-dark-secondary p-4 rounded-lg relative border border-bdr-clr dark:border-bdr-clr-drk">

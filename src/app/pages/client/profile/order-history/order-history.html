@@ -27,7 +27,6 @@
               />
             </div>
           } @else {
-            <!-- Desktop View -->
             <div class="hidden lg:block">
               <ul class="order-history">
                 <li class="title flex items-center justify-between gap-5 pb-[10px] sm:pb-5 border-b last:border-bdr-clr dark:border-bdr-clr-drk">
@@ -88,7 +87,6 @@
               </ul>
             </div>
 
-            <!-- Mobile Card View -->
             <div class="lg:hidden space-y-4">
               @for (order of orderStore.orderList(); track order.id) {
                 <div class="bg-white dark:bg-title p-5 rounded-xl border border-bdr-clr dark:border-bdr-clr-drk shadow-sm">

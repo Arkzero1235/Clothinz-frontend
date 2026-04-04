@@ -820,6 +820,19 @@
       "entries": "mục",
       "yes": "Có",
       "no": "Không"
+    },
+    "chatbot": {
+      "title": "Trợ lý AI",
+      "subtitle": "Hỏi tôi bất cứ điều gì!",
+      "welcome": "Hãy đặt câu hỏi cho tôi!",
+      "emptyAnswer": "Xin lỗi, không có phản hồi.",
+      "error": "Xin lỗi, đã xảy ra lỗi kết nối.",
+      "processing": "AI đang trả lời...",
+      "inputPlaceholder": "Nhập tin nhắn...",
+      "send": "Gửi",
+      "openLabel": "Mở Chat",
+      "closeLabel": "Đóng Chat",
+      "stock": "Kho"
     }
   }
 }
