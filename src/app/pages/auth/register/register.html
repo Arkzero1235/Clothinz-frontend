@@ -1,0 +1,73 @@
+<app-navbar/>
+
+<div class="min-h-screen flex items-center justify-center py-12 md:py-16 px-4 sm:px-8 bg-[#F8F8F9] dark:bg-dark-secondary selection:bg-primary/20">
+    <div class="w-full max-w-lg bg-white dark:bg-title border border-[#17243026] dark:border-bdr-clr-drk rounded-sm shadow-sm p-8 sm:p-12 relative overflow-hidden">
+
+        <div class="text-center mb-10 relative z-10 mt-10">
+            <h2 class="text-2xl sm:text-3xl font-bold text-primary uppercase tracking-wider leading-none mb-3" data-aos="fade-up">{{ 'auth.registerTitle' | translate }}</h2>
+            <p class="text-gray-500 dark:text-gray-400 text-base" data-aos="fade-up" data-aos-delay="100">{{ 'auth.login.subtitle' | translate }}</p>
+        </div>
+        
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="relative z-10">
+            <div class="mt-6" data-aos="fade-up" data-aos-delay="200">
+                <label class="text-base font-medium leading-none mb-2.5 flex items-center gap-2 dark:text-white">
+                    <i class="mdi mdi-card-account-details-outline text-xl text-primary"></i>
+                    {{ 'auth.fullName' | translate }}
+                </label>
+                <input formControlName="fullName" class="w-full h-12 md:h-14 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg focus:border-primary px-4 outline-none transition-colors duration-300" type="text" [placeholder]="'auth.fullNamePlaceholder' | translate">
+                @if (getErrorMessage('fullName')) {
+                    <span class="text-red-500 text-sm mt-1.5 block">{{ getErrorMessage('fullName') }}</span>
+                }
+            </div>
+            
+            <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
+                <label class="text-base font-medium leading-none mb-2.5 flex items-center gap-2 dark:text-white">
+                    <i class="mdi mdi-email-outline text-xl text-primary"></i>
+                    {{ 'auth.email' | translate }}
+                </label>
+                <input formControlName="email" class="w-full h-12 md:h-14 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg focus:border-primary px-4 outline-none transition-colors duration-300" type="email" [placeholder]="'auth.emailPlaceholder' | translate">
+                @if (getErrorMessage('email')) {
+                    <span class="text-red-500 text-sm mt-1.5 block">{{ getErrorMessage('email') }}</span>
+                }
+            </div>
+            
+            <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+                <label class="text-base font-medium leading-none mb-2.5 flex items-center gap-2 dark:text-white">
+                    <i class="mdi mdi-lock-outline text-xl text-primary"></i>
+                    {{ 'auth.password' | translate }}
+                </label>
+                <div class="[&>app-password-input>div>input]:!bg-gray-50 dark:[&>app-password-input>div>input]:!bg-gray-800/50 [&>app-password-input>div>input]:!rounded-lg [&>app-password-input>div>input]:!border-gray-200 dark:[&>app-password-input>div>input]:!border-gray-700">
+                    <app-password-input
+                        [control]="registerForm.controls.password"
+                        [errorMessage]="getErrorMessage('password')"
+                    />
+                </div>
+            </div>
+            
+            <div class="mt-6" data-aos="fade-up" data-aos-delay="500">
+                <app-checkbox
+                    [checked]="rememberMe()"
+                    (checkedChange)="toggleRememberMe($event)"
+                    [label]="'auth.rememberMe'"
+                />
+            </div>
+            
+            <div class="mt-8" data-aos="fade-up" data-aos-delay="600">
+                <app-button
+                    color="btn-theme-solid"
+                    width="100%"
+                    [text]="'auth.register' | translate"
+                    [disabled]="registerForm.invalid"
+                    (clicked)="onSubmit()"
+                />
+            </div>
+        </form>
+        
+        <p class="text-center text-gray-500 dark:text-gray-400 text-base mt-5 relative z-10" data-aos="fade-up" data-aos-delay="700">
+            {{ 'auth.haveAccount' | translate }} 
+            <a [routerLink]="'/auth/login'" class="text-primary font-semibold ml-1 hover:underline decoration-2 underline-offset-4">{{ 'auth.login.label' | translate }}</a>
+        </p>
+    </div>
+</div>
+
+<app-footer/>

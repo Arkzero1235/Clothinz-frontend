@@ -1,0 +1,29 @@
+<app-navbar />
+
+<app-breadcrumb
+        [title]="category()?.name || ('shop.category.title' | translate)"
+    [items]="[
+            { label: ('nav.home' | translate), link: '/' },
+            { label: ('nav.shop' | translate), link: '/shop' },
+            { label: category()?.name || ('shop.category.title' | translate) }
+    ]"
+/>
+<div class="s-py-100">
+    <div class="container-fluid">
+        <div data-aos="fade-up" data-aos-delay="200">
+            <app-product-card
+                [classList]="'max-w-[1720px] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 aos-init aos-animate'"
+                [productList]="productList()"
+                (onAddToCart)="onAddToCart($event)"
+                (onQuickView)="handleQuickView($event)" />
+
+            <div class="mt-10 md:mt-12 flex items-center justify-center gap-[10px]">
+                <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()"
+                    (pageChange)="goToPage($event)" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-footer />

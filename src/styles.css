@@ -1,0 +1,54 @@
+@import "./styles/base.css";
+@import "./styles/variables.css";
+@import "./styles/animations.css";
+@import "./styles/tables.css";
+@import "./styles/navigation.css";
+@import "./styles/popups.css";
+@import "./styles/sliders.css";
+
+:root {
+	--app-font-primary: "Be Vietnam Pro", "Segoe UI", Roboto, Arial, sans-serif;
+	--app-radius-sm: 8px;
+	--app-radius-md: 12px;
+	--app-radius-lg: 16px;
+}
+
+body,
+.font-primary {
+	font-family: var(--app-font-primary) !important;
+}
+
+.btn,
+.btn::before,
+button,
+input,
+textarea,
+select,
+.select-active.nice-select,
+.outline-select.nice-select,
+.select-active.nice-select .list,
+.outline-select.nice-select .list {
+	border-radius: var(--app-radius-md);
+}
+
+.main-menu,
+.main-menu .sub-menu,
+.main-menu .mega-menu,
+.wishlist_popup,
+.hdr_cart_popup,
+.search_popup,
+.table-wrapper {
+	border-radius: var(--app-radius-lg);
+}
+
+#slider-container,
+#slider-container .ui-slider-range,
+span.ui-slider-handle.ui-state-default.ui-corner-all,
+.multi-range-slider,
+.multi-range-slider .bar-left,
+.multi-range-slider .bar-right,
+.multi-range-slider .thumb::before,
+.ngx-slider .ngx-slider-pointer,
+.ngx-slider .ngx-slider-selection {
+	border-radius: var(--app-radius-sm) !important;
+}

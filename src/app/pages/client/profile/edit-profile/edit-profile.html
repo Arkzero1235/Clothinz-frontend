@@ -1,0 +1,85 @@
+<app-navbar/>
+
+<app-breadcrumb
+    [title]="'profile.editProfile' | translate"
+    [items]="[{ label: ('nav.home' | translate), link: '/' }, { label: ('profile.profile' | translate) }]"
+/>
+
+<div class="s-py-100" data-aos="fade-up">
+    <div class="container-fluid">
+        <div class="max-w-[1720px] mx-auto flex items-start gap-8 md:gap-12 2xl:gap-24 flex-col md:flex-row my-profile-navtab">
+            <div class="w-full md:w-[200px] lg:w-[300px] flex-none">
+                <app-account-tab/>
+            </div>
+            <div class="w-full md:w-auto md:flex-1 overflow-auto">
+                <div class="w-full max-w-[951px] bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-8 lg:p-[50px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="mb-8 flex justify-center lg:justify-start">
+                            <div class="relative w-32 h-32 rounded-full overflow-hidden group cursor-pointer" (click)="fileInput.click()">
+                                <img class="w-full h-full object-cover" 
+                                     [src]="previewImage() || 'assets/img/profile.jpg'" 
+                                     [attr.alt]="'profile.edit.avatarAlt' | translate">
+                                <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                    <i class="fa-solid fa-camera text-white text-2xl mb-1"></i>
+                                    <span class="text-white text-xs font-medium">{{ 'profile.edit.changeImage' | translate }}</span>
+                                </div>
+                                <input #fileInput type="file" class="hidden" accept="image/*" (change)="onFileSelected($event)">
+                            </div>
+                        </div>
+
+                        <div class="flex items-start flex-col lg:flex-row gap-5 sm:gap-6">
+                            <div class="grid gap-5 sm:gap-6 w-full lg:w-1/2">
+                                <div>
+                                    <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">{{ 'profile.edit.fields.fullName' | translate }}</label>
+                                    <input formControlName="fullName" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" [placeholder]="'profile.edit.placeholders.fullName' | translate">
+                                    @if (getErrorMessage('fullName')) {
+                                        <span class="text-red-500 text-sm mt-1 block">{{ getErrorMessage('fullName') }}</span>
+                                    }
+                                </div>
+                                <div>
+                                    <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">{{ 'profile.edit.fields.phone' | translate }}</label>
+                                    <input formControlName="phone" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300 appearance-none" type="text" [placeholder]="'profile.edit.placeholders.phone' | translate">
+                                    @if (getErrorMessage('phone')) {
+                                        <span class="text-red-500 text-sm mt-1 block">{{ getErrorMessage('phone') }}</span>
+                                    }
+                                </div>
+                                <div>
+                                    <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">{{ 'profile.edit.fields.email' | translate }}</label>
+                                    <input formControlName="email" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" [placeholder]="'profile.edit.placeholders.email' | translate">
+                                    @if (getErrorMessage('email')) {
+                                        <span class="text-red-500 text-sm mt-1 block">{{ getErrorMessage('email') }}</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid gap-5 sm:gap-6 w-full lg:w-1/2">
+                                <app-location-selector
+                                    [provinceControl]="provinceControl"
+                                    [districtControl]="districtControl"
+                                    [wardControl]="wardControl"
+                                    layout="stacked"
+                                    [isDisabled]="isLoading()"
+                                />
+                                <div>
+                                    <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">{{ 'profile.edit.fields.specificAddress' | translate }}</label>
+                                    <input formControlName="specificAddress" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" [placeholder]="'profile.edit.placeholders.specificAddress' | translate">
+                                    @if (getErrorMessage('specificAddress')) {
+                                        <span class="text-red-500 text-sm mt-1 block">{{ getErrorMessage('specificAddress') }}</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <app-button
+                            color="btn-secondary-solid"
+                            padding="mt-5 sm:mt-8 md:mt-12"
+                            [text]="'profile.edit.saveChange' | translate"
+                            [disabled]="isLoading()"
+                            (clicked)="onSubmit()"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer/>

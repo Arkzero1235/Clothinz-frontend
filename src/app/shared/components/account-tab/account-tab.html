@@ -1,0 +1,17 @@
+<ul class="divide-y dark:divide-paragraph text-title dark:text-white text-base sm:text-lg lg:text-xl flex flex-col justify-center leading-none">
+    <li class="pb-3 lg:pb-6 pl-6 lg:pl-12" [class.active]="currentPath() === '/my-profile'" [class.text-primary]="currentPath() === '/my-profile'">
+        <a class="duration-300 hover:text-primary" routerLink="/my-profile">{{ 'profile.myProfile' | translate }}</a>
+    </li>
+    <li class="py-3 lg:py-6 pl-6 lg:pl-12" [class.active]="currentPath() === '/edit-profile'" [class.text-primary]="currentPath() === '/edit-profile'">
+        <a class="duration-300 hover:text-primary" routerLink="/edit-profile">{{ 'profile.editProfile' | translate }}</a>
+    </li>
+    <li class="py-3 lg:py-6 pl-6 lg:pl-12" [class.active]="currentPath() === '/order-history'" [class.text-primary]="currentPath() === '/order-history'">
+        <a class="duration-300 hover:text-primary" routerLink="/order-history">{{ 'profile.orderHistory' | translate }}</a>
+    </li>
+    <li class="py-3 lg:py-6 pl-6 lg:pl-12" [class.active]="currentPath() === '/wishlist'" [class.text-primary]="currentPath() === '/wishlist'">
+        <a class="duration-300 hover:text-primary" routerLink="/wishlist">{{ 'profile.wishlist' | translate }}</a>
+    </li>
+    <li class="pt-3 lg:pt-6 pl-6 lg:pl-12">
+        <button type="button" class="duration-300 hover:text-primary" (click)="logout()">{{ 'profile.logout' | translate }}</button>
+    </li>
+</ul>

@@ -1,0 +1,87 @@
+<app-navbar/>
+
+<app-breadcrumb
+  [title]="'shop.title' | translate"
+  [items]="[{ label: ('nav.home' | translate), link: '/' }, { label: ('shop.title' | translate) }]"
+/>
+
+<div class="s-py-100" >
+  <div class="container">
+    <div class="max-w-[1477px] mx-auto flex items-start justify-between gap-8 md:gap-10 flex-col lg:flex-row">
+      <div class="grid gap-[15px] lg:max-w-[300px] w-full sm:grid-cols-2 lg:grid-cols-1" data-aos="fade-up">
+        <div class="bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-[30px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'shop.categories.title' | translate }}</h4>
+          @if (loadingCategories()) {
+            <div class="text-center py-4">{{ 'shop.categories.loading' | translate }}</div>
+          } @else if (displayCategories().length === 0) {
+            <div class="text-center py-4">{{ 'shop.categories.empty' | translate }}</div>
+          } @else {
+            <div class="grid gap-5">
+              @for (category of displayCategories(); track category.id) {
+                <label class="categoryies-iteem flex items-center gap-[10px] cursor-pointer">
+                  <input 
+                    class="appearance-none hidden" 
+                    type="checkbox" 
+                    [checked]="isCategorySelected(category.id)"
+                    (change)="toggleCategory(category.id)"
+                  >
+                  <span class="w-4 h-4 rounded-[5px] border border-title dark:border-white flex items-center justify-center duration-300">
+                    <img 
+                      class="duration-300 w-full h-full dark:invert" 
+                      [class.opacity-0]="!isCategorySelected(category.id)"
+                      [class.opacity-100]="isCategorySelected(category.id)"
+                      src="assets/img/svg/inline/shop/checkmark-9x8.svg" 
+                      alt="" 
+                    />
+                  </span>
+                  <span class="text-title dark:text-white block sm:leading-none transform translate-y-[1px] duration-300 select-none hover:text-primary dark:hover:text-primary">{{category.name}}</span>
+                </label>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-[30px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'shop.sort.title' | translate }}</h4>
+          <div class="nice-select select-active select-white" [class.open]="isopen()" (click)="toggleDropdown()">
+            <span class="current">{{ selectedSortLabelKey() | translate }}</span>
+            <ul class="list">
+              @for (sortOption of sortOptions(); track sortOption.value) {
+                <li class="option" (click)="handleSortSelect(sortOption.value, $event)">
+                  {{ sortOption.labelKey | translate }}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-[30px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'shop.priceRange.title' | translate }}</h4>
+          <div class="price-filter-content">
+            <ngx-slider class="js-range-slider" [(value)]="value" [(highValue)]="highValue" [options]="options()"></ngx-slider>
+            <div class="price-filter">
+              <div class="flex items-center gap-1 mt-4">
+                <span class="text-[15px] leading-none">{{ 'shop.priceRange.label' | translate }}: {{formatVND(value())}}₫ - {{formatVND(highValue())}}₫</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:max-w-[1100px] w-full" data-aos="fade-up" data-aos-delay="200">
+        <app-product-card 
+          [classList]="'grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-8'" 
+          [productList]="productList()"
+          (onAddToCart)="onAddToCart($event)"
+          (onQuickView)="handleQuickView($event)"
+        />
+        <div class="mt-10 md:mt-12 flex items-center justify-center gap-[10px]">
+          <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()" (pageChange)="goToPage($event)" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer/>

@@ -1,0 +1,23 @@
+@if (routerLink()) {
+  <a
+    [routerLink]="routerLink()"
+    [class]="'btn ' + color() + ' ' + size() + ' ' + padding() + ' disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none'"
+    [style.width]="width()"
+    [style.height]="height()"
+    [attr.data-text]="text()"
+  >
+    <span>{{ text() }}</span>
+  </a>
+} @else {
+  <button
+    type="button"
+    [class]="'btn ' + color() + ' ' + size() + ' ' + padding() + ' disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none'"
+    [style.width]="width()"
+    [style.height]="height()"
+    [attr.data-text]="text()"
+    [disabled]="disabled()"
+    (click)="onClick()"
+  >
+    <span>{{ text() }}</span>
+  </button>
+}

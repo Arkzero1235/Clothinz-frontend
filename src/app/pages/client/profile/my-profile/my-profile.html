@@ -1,0 +1,52 @@
+<app-navbar/>
+
+<app-breadcrumb
+    [title]="'profile.myProfile' | translate"
+    [items]="[{ label: ('nav.home' | translate), link: '/' }, { label: ('profile.profile' | translate) }]"
+/>
+
+<div class="s-py-100" data-aos="fade-up">
+    <div class="container-fluid">
+        <div class="max-w-[1720px] mx-auto flex items-start gap-8 md:gap-12 2xl:gap-24 flex-col md:flex-row my-profile-navtab">
+            <div class="w-full md:w-[200px] lg:w-[300px] flex-none">
+                <app-account-tab/>
+            </div>
+            <div class="w-full md:w-auto md:flex-1 overflow-auto">
+                <div class="w-full max-w-[951px] bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-8 lg:p-[50px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+                    <div class="flex items-center gap-5 sm:gap-6 mb-8">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden flex-none">
+                            <img class="w-full h-full object-cover" 
+                                 [src]="authStore.currentUser()?.image || 'assets/img/profile.jpg'" 
+                                 [attr.alt]="'profile.myProfilePage.avatarAlt' | translate">
+                        </div>
+                        <div>
+                            <h3 class="font-semibold leading-none">{{ authStore.currentUser()?.fullName }}</h3>
+                        </div>
+                    </div>
+                    <div class="mt-5 sm:mt-8 md:mt-10 grid gap-4 sm:gap-6">
+                        @if (primaryAddress(); as address) {
+                        <a [routerLink]="[]" class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone w-3 sm:w-[17px] text-primary"></i>
+                            <span class="leading-none font-medium text-base sm:text-lg">{{ address.phone }}</span>
+                        </a>
+                        }
+                        <a [routerLink]="[]" class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope w-3 sm:w-[17px] text-primary"></i>
+                            <span class="leading-none font-medium text-base sm:text-lg">{{ authStore.currentUser()?.email }}</span>
+                        </a>
+                        @if (primaryAddress(); as address) {
+                        <a [routerLink]="[]" class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot w-3 sm:w-[17px] text-primary"></i>
+                            <span class="leading-none font-medium text-base sm:text-lg">
+                                {{ address.specificAddress }}, {{ address.ward }}, {{ address.district }}, {{ address.province }}
+                            </span>
+                        </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer/>

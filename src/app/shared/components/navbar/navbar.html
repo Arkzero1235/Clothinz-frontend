@@ -1,0 +1,66 @@
+<div class="header-area left-0 right-0 z-50" 
+     [class.absolute]="isIndexPage()"
+     [class.top-0]="isIndexPage()"
+     [class.lg:top-[5px]]="isIndexPage()"
+     [class.xl:top-[10px]]="isIndexPage()"
+     [class.relative]="!isIndexPage()"
+     [class.bg-white]="!isIndexPage()" 
+    [class.px-10]="isIndexPage()"
+    [class.lg:px-20]="isIndexPage()"
+     [class.dark:bg-dark-secondary]="!isIndexPage()"
+     [class.sticky-header]="scroll()">
+    <div [class.container-fluid]="!isIndexPage()" class="mx-auto"
+         [class.w-full]="isIndexPage()"
+         [class.xl:w-[90%]]="isIndexPage()"
+         [class.bg-white/80]="isIndexPage()"
+         [class.px-10]="isIndexPage()"
+    [class.lg:px-15]="isIndexPage()"
+         [class.dark:bg-dark-secondary]="isIndexPage()"
+         [class.backdrop-blur-xl]="isIndexPage()"
+         [class.rounded-xl]="isIndexPage()"
+         [class.shadow-md]="isIndexPage()"
+         [class.border]="isIndexPage()"
+         [class.border-gray-200/50]="isIndexPage()"
+         [class.dark:border-white/10]="isIndexPage()"
+         [class.mt-3]="isIndexPage()">
+        <div class="flex items-center justify-between gap-x-6 max-w-[1720px] mx-auto relative py-[10px] sm:py-4 lg:py-0">
+            <a class="cursor-pointer block lg:ml-0" href="/" aria-label="Fashion">
+                <img src="assets/img/svg/logo.png" alt="" class="dark:hidden w-[100px] sm:w-[150px]"> 
+                <img src="assets/img/svg/logo-light.png" alt="" class="dark:block hidden w-[100px] sm:w-[150px]">
+            </a>
+
+            <div class="main-menu absolute z-50 w-full lg:w-auto top-full left-0 lg:static bg-white lg:bg-transparent lg:dark:bg-transparent px-5 sm:px-[30px] py-[10px] sm:py-5 lg:px-0 lg:py-0" [class.active]="toggle()">
+                <ul class="text-lg leading-none text-black dark:text-white lg:flex lg:gap-[30px]">
+                        <li [class.active]="currentPath() === '/' || currentPath() === ''" >
+                                                         <a href="/">{{ 'nav.home' | translate }}</a>
+                         </li>
+                        <li [class.active]="currentPath() === '/shop'">
+                                                        <a href="/shop">{{ 'nav.shop' | translate }}</a>
+                         </li>
+                         <li class="relative" [class.active]="categoryOpen()">
+                                                         <a (click)="toggleCategory($event)" class="cursor-pointer">{{ 'nav.category' | translate }}<span></span></a>
+                             <ul class="sub-menu lg:absolute z-50 lg:top-full lg:left-0 lg:min-w-[220px] lg:invisible lg:transition-all lg:bg-white lg:dark:bg-secondary lg:py-[15px] lg:pr-[30px]">
+                                 @if (loadingCategories()) {
+                                                                     <li><a href="#">{{ 'common.loading' | translate }}</a></li>
+                                 } @else if (categories().length === 0) {
+                                                                     <li><a href="#">{{ 'nav.noCategories' | translate }}</a></li>
+                                 } @else {
+                                   @for (category of categories(); track category.id) {
+                                     <li><a [href]="'/product-category/' + category.id">{{category.name}}</a></li>
+                                   }
+                                 }
+                             </ul>
+                         </li>
+                         <li [class.active]="currentPath() === '/contact'">
+                                                         <a href="/contact">{{ 'nav.contact' | translate }}</a>
+                         </li>
+                         @if (!authStore.isAuthenticated()) {
+                                                     <li class="lg:hidden"><a href="/auth/login">{{ 'nav.login' | translate }}</a></li>
+                         }
+                </ul>
+            </div>
+
+            <app-nav-menu [toggle]="toggle()" [categories]="categories()" (childValueChange)="onChildValueChange($event)"/>
+        </div>
+    </div>
+</div>

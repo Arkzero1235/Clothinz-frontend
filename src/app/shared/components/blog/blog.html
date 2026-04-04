@@ -1,0 +1,16 @@
+<div class="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-9" data-aos="fade-up" data-aos-delay="100">
+  @for (item of blogList(); track item.id; let i = $index) {
+    <div class="group sm:flex items-center" [class.hidden]="i >= 2" [class.xl:flex]="i >= 2">
+      <a [routerLink]="['/blog-details', item.id]" class="sm:w-1/2 overflow-hidden block">
+        <img class="duration-300 transform scale-100 group-hover:scale-110 w-full aspect-[2/3] object-cover" [src]="item.images[0]" alt="blog-card">
+      </a>
+      <div class="bg-snow dark:bg-dark-secondary p-4 sm:p-5 md:p-6 sm:ml-[-10%] sm:w-[60%] relative z-10">
+        <ul class="flex items-center gap-[5px] sm:gap-[10px] flex-wrap">
+          <li class="text-[12px] sm:text-[15px] leading-none dark:text-white">{{ item.createdAt | date:'dd/MM/yyyy' }}</li>
+          <li><span class="inline-block text-title font-medium text-[10px] sm:text-[15px] leading-none py-1 sm:py-2 px-2 sm:px-[10px] rounded-md bg-primary-midum">{{ 'blog.categoryFashion' | translate }}</span></li>
+        </ul>
+        <h5 class="mt-2 sm:mt-3 font-medium text-base sm:text-xl dark:text-white leading-[1.5]"><a [routerLink]="['/blog-details', item.id]" class="text-underline line-clamp-2">{{ item.title }}</a></h5>
+      </div>
+    </div>
+  }
+</div>

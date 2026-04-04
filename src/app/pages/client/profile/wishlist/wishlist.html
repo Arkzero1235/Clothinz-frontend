@@ -1,0 +1,55 @@
+<app-navbar />
+
+<app-breadcrumb
+  [title]="'profile.wishlist' | translate"
+  [items]="[{ label: ('nav.home' | translate), link: '/' }, { label: ('profile.wishlist' | translate) }]"
+/>
+
+<div class="s-py-100" data-aos="fade-up">
+  <div class="container-fluid">
+    <div
+      class="max-w-[1720px] mx-auto flex items-start gap-8 md:gap-12 2xl:gap-24 flex-col md:flex-row my-profile-navtab">
+      <div class="w-full md:w-[200px] lg:w-[300px] flex-none">
+        <app-account-tab />
+      </div>
+      <div class="w-full md:w-auto md:flex-1 bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-8 lg:p-[50px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+        @if (wishlistStore.count() === 0) {
+        <div class="text-center py-12">
+          <i class="mdi mdi-heart-outline text-6xl text-gray-300 dark:text-gray-600"></i>
+          <h3 class="text-2xl font-medium mt-4 dark:text-white">{{ 'profile.wishlistPage.emptyTitle' | translate }}</h3>
+          <p class="text-gray-500 dark:text-gray-400 mt-2">{{ 'profile.wishlistPage.emptyDesc' | translate }}</p>
+          <a [routerLink]="'/shop'"
+            class="inline-block mt-6 px-6 py-3 bg-primary text-white rounded-lg hover:bg-opacity-90">
+            {{ 'profile.wishlistPage.browseProducts' | translate }}
+          </a>
+        </div>
+        } @else {
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-xl font-medium dark:text-white">{{ 'profile.wishlistPage.itemsCount' | translate:{ count: wishlistStore.count() } }}</h3>
+          <button (click)="clearWishlist()" class="text-red-500 hover:text-red-600 text-sm">{{ 'profile.wishlistPage.clearAll' | translate }}</button>
+        </div>
+        <app-product-card 
+          [productList]="wishlistStore.items()" 
+          classList="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 lg:gap-8"
+          (onAddToCart)="onAddToCart($event)"
+          (onQuickView)="handleQuickView($event)">
+          <ng-template #actionsTemplate let-item>
+            <button (click)="onAddToCart(item)"
+              class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
+              <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>
+              <span class="mt-1">{{ 'profile.wishlistPage.addToCart' | translate }}</span>
+            </button>
+            <button (click)="removeFromWishlist(item.id)"
+              class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
+              <i class="fa-solid fa-heart text-[#F0264A] text-[24px]"></i>
+              <span class="mt-1">{{ 'profile.wishlistPage.remove' | translate }}</span>
+            </button>
+          </ng-template>
+        </app-product-card>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer />

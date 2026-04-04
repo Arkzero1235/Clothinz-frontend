@@ -1,0 +1,128 @@
+<app-navbar/>
+
+<div class="mt-14">
+  <div class="container">
+    <div class="max-w-[940px] mx-auto">
+      @if (data(); as blog) {
+        <div data-aos="fade-up">
+          <ul class="flex items-center gap-[10px] flex-wrap">
+            <li class="text-[15px] leading-none dark:text-white">{{ blog.createdAt ? (blog.createdAt | date:'dd MMMM, yyyy') : '' }}</li>
+            <li><a [routerLink]="'/blog'" class="inline-block text-title font-medium text-[15px] leading-none py-[10px] px-5 rounded-md bg-primary-midum">{{ 'blog.categoryFashion' | translate }}</a></li>
+          </ul>
+          <h1 class="text-2xl leading-snug sm:text-3xl sm:leading-snug md:text-[40px] mt-4 md:mt-6 md:leading-snug">{{ blog.title }}</h1>
+        </div>
+
+        <div class="s-py-50" data-aos="fade-up" data-aos-delay="100">
+          <article class="prose sm:prose-lg dark:prose-p:text-white-light max-w-full mt-4">
+            <p class="leading-[25px] mb-6 whitespace-pre-line">{{ blog.content }}</p>
+          </article>
+
+          @if (blog.images.length) {
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+              @for (img of blog.images; track img) {
+                <img class="w-full aspect-[2/3] object-cover rounded" [src]="img" alt="blog image">
+              }
+            </div>
+          }
+        </div>
+      }
+      <div class="mt-5 sm:mt-7 lg:mt-10 py-5 sm:py-7 lg:py-10 border-y border-bdr-clr dark:border-bdr-clr-drk" data-aos="fade-up">
+        <div class="flex items-center justify-between flex-wrap gap-6">
+          <div class="flex items-center justify-center gap-4">
+            <h6 class="font-normal whitespace-nowrap">{{ 'blog.tags' | translate }} :</h6>
+            <div class="flex flex-wrap gap-[10px]">
+              @for (item of blogTag(); track item) {
+                <app-button
+                  color="btn-theme-outline"
+                  size="btn-xs"
+                  [text]="item"
+                  routerLink="/blog-tag"
+                />
+              }
+            </div>
+          </div>
+          <div class="flex items-center justify-center gap-4">
+            <h6 class="font-normal">{{ 'blog.share' | translate }} :</h6>
+            <div class="flex items-center gap-6">
+              @for (item of shareLinks(); track item.icon) {
+                <a [routerLink]="[]" class="text-title duration-300 dark:text-white hover:text-primary dark:hover:text-primary" [attr.aria-label]="item.ariaLabel">
+                  <i class="text-[20px]" [class]="item.icon"></i>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s-py-50 flex justify-between flex-col md:flex-row gap-8 md:gap-6" data-aos="fade-up">
+        @for (item of adjacentPosts(); track item.type) {
+          <div class="md:max-w-[390px] w-full">
+            <h6 class="tracking-[0.5em] font-semibold mb-5 md:mb-6">{{ item.titleKey | translate }}</h6>
+            <div class="group flex sm:items-center gap-[15px]">
+              <a [routerLink]="['/blog-details', item.blog.id]" class="max-w-[80px] h-auto sm:max-w-[114px] w-full flex-none block">
+                <img class="w-full aspect-[2/3] object-cover" [src]="item.blog.images[0]" [alt]="item.type === 'prev' ? 'prev post' : 'next post'">
+              </a>
+              <div class="flex-1">
+                <ul class="flex items-center gap-[10px] flex-wrap">
+                  <li class="text-[15px] leading-none dark:text-white">{{ item.blog.createdAt | date:'dd/MM/yyyy' }}</li>
+                  <li><span class="inline-block text-title font-medium text-[15px] leading-none py-[10px] px-5 rounded-md bg-primary-midum">{{ 'blog.categoryFashion' | translate }}</span></li>
+                </ul>
+                <h5 class="mt-3 font-medium dark:text-white leading-[1.5] line-clamp-2"><a [routerLink]="['/blog-details', item.blog.id]" class="text-underline">{{ item.blog.title }}</a></h5>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="s-py-50" data-aos="fade-up">
+        <h4 class="font-semibold leading-none mb-5 md:mb-6">{{ 'blog.comments' | translate }} ( 0 )</h4>
+        <div class="p-5 sm:p-[30px] bg-[#F8F5F0] dark:bg-dark-secondary">
+          @for (item of comments(); track item) {
+            <div class="flex flex-col sm:flex-row items-start gap-5 first:pt-0  pt-5 md:pt-[30px] last:pb-0 pb-4 relative last:border-0 border-b border-bdr-clr dark:border-[#3c434a]">
+              <div class="w-[72px] h-[72px] rounded-full flex-none overflow-hidden">
+                <img class="w-full object-cover" [src]="item.image" alt="comment">
+              </div>
+              <div class="max-w-[532px] w-full">
+                <h6 class="font-medium leading-none">{{item.name}}</h6>
+                <p class="mt-2 sm:mt-3">{{item.decs}}</p>
+              </div>
+              <a [routerLink]="[]" class="absolute top-5 right-0 text-title leading-none dark:text-white">
+                {{ 'blog.reply' | translate }}
+              </a>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="pt-3 max-w-[500px] mx-auto" data-aos="fade-up">
+        <h4 class="leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'blog.leaveComment' | translate }}</h4>
+        <div class="grid gap-[15px]">
+          <div>
+            <input class="w-full h-12 md:h-14 border border-[#3C474E] text-title bg-transparent placeholder:text-paragraph dark:text-white focus:border-primary dark:focus:border-primary dark:border-white-light dark:placeholder:text-white-light p-4 outline-none duration-300" type="text" [placeholder]="'blog.fullName' | translate">
+          </div>
+          <div>
+            <input class="w-full h-12 md:h-14 border border-[#3C474E] text-title bg-transparent placeholder:text-paragraph dark:text-white focus:border-primary dark:focus:border-primary dark:border-white-light dark:placeholder:text-white-light p-4 outline-none duration-300" type="email" [placeholder]="'blog.email' | translate">
+          </div>
+          <div>
+            <textarea class="w-full h-28 md:h-[170px] border border-[#3C474E] text-title bg-transparent placeholder:text-paragraph dark:text-white focus:border-primary dark:focus:border-primary dark:border-white-light dark:placeholder:text-white-light p-4 outline-none duration-300" name="Message" [placeholder]="'blog.message' | translate"></textarea>
+          </div>
+        </div>
+        <div class="mt-4 md:mt-6">
+          <app-button
+            color="btn-theme-solid"
+            [text]="'blog.postComment' | translate"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="s-py-100">
+  <div class="container-fluid">
+    <div class="max-w-xl mx-auto mb-8 md:mb-12 text-center" data-aos="fade-up">
+      <h3 class="font-medium leading-none mt-4 md:mt-6 text-2xl md:text-3xl">{{ 'blog.related' | translate }}</h3>
+      <p class="mt-3">{{ 'blog.relatedDesc' | translate }}</p>
+    </div>
+    <app-blog-list/>
+  </div>
+</div>
+
+<app-footer/>

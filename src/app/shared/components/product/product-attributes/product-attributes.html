@@ -1,0 +1,27 @@
+@if (displayAttributes().length > 0) {
+  <div class="flex flex-col gap-4">
+    @for (attr of displayAttributes(); track attr.name) {
+      <div class="flex flex-col gap-2">
+        <h6 class="leading-none font-medium capitalize dark:text-white">{{ attr.name }} :</h6>
+        <div class="flex gap-[10px] flex-wrap">
+          @for (val of attr.values; track val) {
+            <label class="cursor-pointer">
+              <input class="appearance-none hidden" type="radio"
+                [name]="attr.name"
+                [checked]="isSelected(attr.name, val)"
+                (change)="selectAttribute(attr.name, val)">
+              <span class="px-4 py-2 border dark:border-bdr-clr-drk rounded-sm text-sm duration-300 dark:text-white"
+                [class.bg-primary]="isSelected(attr.name, val)"
+                [class.text-white]="isSelected(attr.name, val)"
+                [class.border-primary]="isSelected(attr.name, val)"
+                [class.bg-gray-100]="!isSelected(attr.name, val)"
+                [class.dark:bg-dark-secondary]="!isSelected(attr.name, val)">
+                {{ val }}
+              </span>
+            </label>
+          }
+        </div>
+      </div>
+    }
+  </div>
+}

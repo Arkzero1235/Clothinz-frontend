@@ -1,0 +1,86 @@
+@if (state().isOpen && state().product) {
+  <div class="fixed inset-0 bg-black/50 bg-opacity-90 backdrop-blur-[3px] z-50 flex items-center justify-center p-4 quick-view-backdrop"
+       (click)="closeOnBackdrop($event)">
+    <div class="bg-white dark:bg-title relative max-w-7xl w-full max-h-[90vh] overflow-y-auto"
+         (click)="$event.stopPropagation()">
+      
+      <button (click)="close()" 
+              class="absolute top-0 right-0 z-10 w-10 h-10 flex items-center justify-center bg-[#E8E9EA] dark:bg-dark-secondary hover:bg-primary hover:text-white duration-300 text-title dark:text-white">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="flex flex-col md:flex-row">
+        
+        <div class="w-full md:w-[55%]">
+          <div class="grid gap-1 h-full" [class.grid-cols-2]="displayImages().length === 2" [class.grid-cols-1]="displayImages().length !== 2">
+            @if (displayImages().length > 0) {
+              @for (img of displayImages(); track img) {
+                <div class="overflow-hidden">
+                  <img [src]="img" class="w-full h-full object-cover" style="aspect-ratio: 2/3" [alt]="state().product!.name">
+                </div>
+              }
+            } @else {
+              <div class="overflow-hidden">
+                <img [src]="state().product!.thumbnail" class="w-full h-full object-cover" style="aspect-ratio: 2/3" [alt]="state().product!.name">
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="w-full md:w-[45%] p-6 md:p-8">
+          
+          <div class="pb-4 sm:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk">
+            <h2 class="text-xl sm:text-2xl font-semibold leading-tight dark:text-white">{{ state().product!.name }}</h2>
+            <div class="flex gap-4 items-center mt-[15px]">
+              <span class="text-2xl sm:text-3xl text-primary leading-none block">{{ formatPrice(state().product!.price) }}đ</span>
+              @if (state().product!.stock > 0) {
+                <span class="text-sm text-green-600 font-medium">{{ 'product.inStock' | translate:{ count: state().product!.stock } }}</span>
+              } @else {
+                <span class="text-sm text-red-600 font-medium">{{ 'product.outOfStock' | translate }}</span>
+              }
+            </div>
+          </div>
+
+          <div class="py-4 sm:py-6 border-b border-bdr-clr dark:border-bdr-clr-drk">
+            <app-inc-dec [val]="quantity()" (valChange)="quantity.set($event)" [min]="1" [max]="state().product!.stock || 1"/>
+
+            <div class="mt-5 sm:mt-8 mb-6">
+              <app-product-attributes 
+                [attributes]="state().product?.attributes || []"
+                [selectedAttributes]="selectedAttributes()"
+                (attributeChange)="onAttributeChange($event)">
+              </app-product-attributes>
+            </div>
+
+            <div class="flex gap-4 mt-4 sm:mt-6 flex-wrap">
+              <button (click)="addToCart()" 
+                      [disabled]="state().product!.stock < 1"
+                      class="btn btn-solid disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none" 
+                    [attr.data-text]="'product.addToCart' | translate">
+                  <span>{{ 'product.addToCart' | translate }}</span>
+              </button>
+              <button (click)="toggleWishlist()" 
+                      [disabled]="state().product!.stock < 1"
+                      class="btn btn-outline disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none" 
+                    [attr.data-text]="isInWishlist() ? ('wishlist.remove' | translate) : ('wishlist.add' | translate)">
+                  <span>{{ isInWishlist() ? ('wishlist.remove' | translate) : ('wishlist.add' | translate) }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-4 sm:pt-6">
+            <button (click)="viewFullDetails()"
+                    class="text-primary hover:text-primary/80 font-medium text-sm duration-300 flex items-center gap-1">
+              {{ 'product.viewDetails' | translate }}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

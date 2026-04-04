@@ -1,0 +1,156 @@
+ <div class="switcher z-20 w-12 h-12 fixed bottom-[10px] md:bottom-5 left-[10px] md:left-5 rounded-full bg-white dark:bg-dark-secondary shadow-lg flex items-center justify-center cursor-pointer border border-bdr-clr dark:border-bdr-clr-drk">
+    <app-switcher [showLangToggle]="false"/>
+</div>
+
+<div class="s-py-100 min-h-screen">
+    <div class="container">
+        @if (loading()) {
+            <div class="flex justify-center items-center min-h-[400px]">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+        } @else if (order()) {
+            <div class="max-w-[800px] mx-auto">
+                <div class="div">
+                    <div class="flex justify-between items-center flex-wrap mb-8 gap-4 px-2 sm:px-0">
+                        <h1 class="font-medium leading-tight text-xl md:text-3xl text-title dark:text-white">{{ 'shop.invoice.title' | translate:{ id: order()!.id } }}</h1>
+                        <app-button 
+                            color="btn-solid" 
+                            padding="rounded-full text-sm sm:text-base px-5" 
+                            [text]="'shop.invoice.print' | translate" 
+                            (clicked)="printInvoice()" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-[800px] mx-auto">
+                <a class="cursor-pointer block mb-[30px] md:mb-[50px] text-center sm:text-left" [routerLink]="'/'" aria-label="Fashion">
+                    <img [src]="'assets/img/svg/logo.png'" alt="" class='dark:hidden w-[140px] sm:w-[200px] mx-auto sm:mx-0'/> 
+                    <img [src]="'assets/img/svg/logo-light.png'" alt="" class='dark:block hidden w-[140px] sm:w-[200px] mx-auto sm:mx-0'/>
+                </a>
+                <div class="grid md:grid-cols-2 gap-5 md:gap-[30px] mb-[30px] md:mb-[50px]">
+                    <div class="p-5 md:p-[30px] border border-dashed border-title dark:border-bdr-clr-drk rounded-lg md:rounded-[16px] bg-white dark:bg-title shadow-sm">
+                        <p class="text-sm md:text-base text-paragraph dark:text-white font-normal">{{ 'shop.invoice.orderDate' | translate }}: {{order()!.createdAt | date:'dd/MM/yyyy'}}</p>
+                        <h3 class="font-medium leading-tight mt-3 md:mt-4 text-base md:text-lg">{{ 'shop.invoice.title' | translate:{ id: order()!.id } }}</h3>
+                        <p class="font-medium leading-tight mt-3 md:mt-4 text-base md:text-lg">{{ 'shop.invoice.status' | translate }}: <span [class]="getStatusClass(order()!.status)" class="font-bold">{{getStatusLabel(order()!.status)}}</span></p>
+                        
+                        <h2 class="pl-2.5 font-semibold leading-none mt-6 md:mt-10 text-lg md:text-[20px] relative before:absolute before:top-[-2px] before:left-0 before:w-[4px] before:h-[100%] before:bg-primary">{{ 'shop.invoice.shopInfo' | translate }}</h2>
+                        <p class="font-medium leading-none mt-4 md:mt-5 text-base md:text-lg">{{ 'shop.invoice.shopName' | translate }}</p>
+                        <p class="text-sm md:text-base text-paragraph dark:text-white font-normal mt-3 md:mt-4">{{ 'shop.invoice.shopAddress1' | translate }}</p>
+                        <p class="text-sm md:text-base text-paragraph dark:text-white font-normal">{{ 'shop.invoice.shopAddress2' | translate }}</p>
+                    </div>
+                    <div class="p-5 md:p-[30px] border border-dashed border-title dark:border-bdr-clr-drk rounded-lg md:rounded-[16px] bg-white dark:bg-title shadow-sm">
+                        <p class="text-sm md:text-base text-paragraph dark:text-white font-normal">{{ 'shop.invoice.deliveryDate' | translate }}: {{order()!.updatedAt | date:'dd/MM/yyyy'}}</p>
+                        <h2 class="pl-2.5 font-semibold leading-none mt-6 md:mt-10 text-lg md:text-[20px] relative before:absolute before:top-[-2px] before:left-0 before:w-[4px] before:h-[100%] before:bg-primary">{{ 'shop.invoice.customerInfo' | translate }}</h2>
+                        <p class="font-medium leading-none mt-4 md:mt-5 text-base md:text-lg">{{order()!.receiverName}}</p>
+                        <p class="text-sm md:text-base text-paragraph dark:text-white font-normal mt-3 md:mt-4">{{order()!.receiverAddress}}</p>
+                        @if (order()!.note) {
+                            <p class="text-xs md:text-sm text-paragraph dark:text-white font-normal mt-3 md:mt-4 italic opacity-80">{{ 'shop.invoice.note' | translate }}: {{order()!.note}}</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        <div class="max-w-[800px] mx-auto">
+            <div class="div bg-primary-midum px-[30px] md:px-[40px] py-[25px]">
+                <h2 class="leading-none text-2xl font-semibold text-title dark:text-white">{{ 'shop.invoice.orderInfo' | translate }}</h2>
+            </div>
+        </div>    
+        <div class="max-w-[800px] mx-auto rounded-b-[30px] w-full bg-invoice dark:bg-dark-secondary pt-[30px] px-4 md:px-[40px] pb-[30px] md:pb-[40px] border border-[#17243026] dark:border-bdr-clr-drk border-opacity-15">
+            <div class="border-t-dashed block border-dashed border-title pb-[30px] aos-init aos-animate">
+                <!-- Desktop Table -->
+                <div class="hidden md:block overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="py-3 text-left font-semibold leading-none text-xl lg:text-2xl text-title dark:text-white whitespace-nowrap">{{ 'shop.cart.table.product' | translate }}</th>
+                                <th class="py-3 px-4 text-center font-semibold leading-none text-xl lg:text-2xl text-title dark:text-white whitespace-nowrap">{{ 'shop.cart.table.quantity' | translate }}</th>
+                                <th class="py-3 px-4 text-center font-semibold leading-none text-xl lg:text-2xl text-title dark:text-white whitespace-nowrap">{{ 'shop.cart.table.price' | translate }}</th>
+                                <th class="py-3 text-right font-semibold leading-none text-xl lg:text-2xl text-title dark:text-white whitespace-nowrap">{{ 'shop.cart.table.total' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of order()!.previews; track item.productId; let isLast = $last) {
+                                <tr [class.border-b]="!isLast" class="border-solid border-title dark:border-bdr-clr-drk border-opacity-10">
+                                    <td class="py-4 flex items-center whitespace-nowrap">
+                                        <div class="min-w-[100px] max-w-[110px] max-h-[150px] mr-4">
+                                            <img class="w-full h-full max-w-[100px] max-h-[150px] object-cover" [src]="item.thumbnail" [alt]="item.productName">
+                                        </div>
+                                        <div>
+                                            <p class="text-base sm:text-lg text-title dark:text-white font-semibold">{{item.productName}}</p>
+                                            @if (item.selectedAttributes && item.selectedAttributes.length > 0) {
+                                                <div class="flex flex-col gap-1 mt-2">
+                                                    @for (attr of getDisplayAttributes(item.selectedAttributes); track attr.name) {
+                                                        <div class="flex gap-1.5 items-center">
+                                                            <span class="text-xs font-medium text-title dark:text-white capitalize">{{ attr.name }}:</span>
+                                                            <span class="px-2 py-0.5 border rounded text-xs text-title dark:text-white dark:border-bdr-clr-drk">
+                                                                {{ attr.value }}
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-4 text-center text-base text-paragraph dark:text-white font-semibold">{{item.quantity}}</td>
+                                    <td class="py-4 px-4 text-center text-base text-paragraph dark:text-white font-semibold">{{formatVND(item.price)}}đ</td>
+                                    <td class="py-4 text-right text-base text-paragraph dark:text-white font-semibold">{{formatVND(item.price * item.quantity)}}đ</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile Card List -->
+                <div class="md:hidden space-y-4">
+                    @for (item of order()!.previews; track item.productId) {
+                        <div class="flex gap-4 py-4 border-b border-dashed border-title dark:border-bdr-clr-drk last:border-0">
+                            <div class="w-20 h-28 flex-none bg-white dark:bg-title rounded overflow-hidden">
+                                <img [src]="item.thumbnail" [alt]="item.productName" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h5 class="font-semibold text-title dark:text-white text-base leading-tight mb-1 truncate">
+                                    {{item.productName}}
+                                </h5>
+                                
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    @if (item.selectedAttributes) {
+                                        @for (attr of getDisplayAttributes(item.selectedAttributes); track attr.name) {
+                                            <span class="text-[10px] bg-white dark:bg-title px-1 py-0.5 rounded border border-bdr-clr dark:border-bdr-clr-drk dark:text-white">
+                                                {{ attr.name }}: {{ attr.value }}
+                                            </span>
+                                        }
+                                    }
+                                </div>
+
+                                <div class="flex justify-between items-end">
+                                    <div class="text-sm">
+                                        <span class="text-gray-500 dark:text-gray-400 block">{{item.quantity}} x {{formatVND(item.price)}}đ</span>
+                                    </div>
+                                    <div class="font-bold text-primary text-base">
+                                        {{formatVND(item.price * item.quantity)}}đ
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="border-t border-t-dashed border-t-title dark:border-bdr-clr-drk pt-7 block aos-init aos-animate">
+                <div class="max-w-[325px] flex justify-end flex-col w-full ml-auto mr-0">
+                    <div class="flex justify-between flex-wrap font-bold leading-none text-base md:text-lg">
+                        <span>{{ 'shop.invoice.totalAmount' | translate }}:</span>
+                        <span class="text-primary">{{formatVND(order()!.totalAmount)}}đ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        } @else {
+            <div class="text-center py-20">
+                <p class="text-lg text-title dark:text-white">{{ 'shop.invoice.notFound' | translate }}</p>
+                <a [routerLink]="'/order-history'" class="btn btn-outline mt-4" [attr.data-text]="'shop.invoice.backToOrders' | translate">
+                    <span>{{ 'shop.invoice.backToOrders' | translate }}</span>
+                </a>
+            </div>
+        }
+    </div>

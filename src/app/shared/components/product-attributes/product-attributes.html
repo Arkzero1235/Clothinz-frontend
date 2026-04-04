@@ -1,0 +1,10 @@
+@if (attributes() && attributes().length > 0) {
+  <div class="flex flex-col gap-1.5">
+    @for (attr of getDisplayAttributes(); track attr.name) {
+      <div class="flex flex-wrap gap-1.5 items-center">
+        <h6 class="text-title dark:text-white font-normal capitalize">{{ attr.name }}:</h6>
+        <span [class]="attributeValueClass()">{{ attr.value }}</span>
+      </div>
+    }
+  </div>
+}
