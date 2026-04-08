@@ -9,14 +9,13 @@ const LANG_STORAGE_KEY = 'lang';
 })
 export class LocaleService {
   private readonly supportedLangs = ['en', 'vi'];
-  private readonly defaultLang = 'en';
+  private readonly defaultLang = 'vi';
 
   constructor(private readonly translate: TranslateService) {}
 
   async init(): Promise<void> {
     const storedLang = localStorage.getItem(LANG_STORAGE_KEY) ?? undefined;
-    const browserLang = this.translate.getBrowserLang() ?? undefined;
-    const lang = this.normalizeLang(storedLang ?? browserLang ?? this.defaultLang);
+    const lang = this.normalizeLang(storedLang ?? this.defaultLang);
 
     this.translate.setFallbackLang(this.defaultLang);
     await firstValueFrom(this.translate.use(lang));

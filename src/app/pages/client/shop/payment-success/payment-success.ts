@@ -10,6 +10,8 @@ import Aos from 'aos';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Button } from "@shared/components/button/button";
 import { PaymentResultCardComponent } from '@shared/components';
+import { CartStore } from '@core/cart/cart.store';
+import { OrderStore } from '@core/order/order.store';
 
 @Component({
   selector: 'app-payment-success',
@@ -30,6 +32,8 @@ import { PaymentResultCardComponent } from '@shared/components';
 export class PaymentSuccess implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly translate = inject(TranslateService);
+  private readonly cartStore = inject(CartStore);
+  private readonly orderStore = inject(OrderStore);
 
   readonly orderId = signal<number | null>(null);
   readonly paymentId = signal<number | null>(null);
@@ -71,15 +75,20 @@ export class PaymentSuccess implements OnInit {
       this.orderId.set(parseInt(params['orderId']) || null);
       this.paymentId.set(parseInt(params['paymentId']) || null);
       this.amount.set(parseFloat(params['amount']) || 0);
-      this.method.set(params['method'] || 'COD');
+      const method = params['method'] || 'COD';
+      this.method.set(method);
+
+      if (method === 'VNPAY') {
+        this.orderStore.clearPendingOrder();
+        this.cartStore.clearCart(true);
+      }
     });
   }
 
   getMethodName(method: string): string {
     const methodNames: Record<string, string> = {
       'COD': this.translate.instant('shop.payment.cod.title'),
-      'CARD': this.translate.instant('shop.payment.card.title'),
-      'BANK_TRANSFER': this.translate.instant('shop.payment.bank.title')
+      'VNPAY': this.translate.instant('shop.payment.vnpay.title')
     };
     return methodNames[method] || method;
   }

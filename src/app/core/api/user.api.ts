@@ -38,6 +38,10 @@ export class UserApi {
     return this.http.patch<ApiResponse<User>>(`${API_URL}/users/${id}`, payload);
   }
 
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${API_URL}/users/${id}`);
+  }
+
   searchUsers(query: string): Observable<ApiResponse<PaginatedResponse<User>>> {
     const httpParams = new HttpParams().set('query', query);
     return this.http.get<ApiResponse<PaginatedResponse<User>>>(`${API_URL}/users/search`, { params: httpParams });

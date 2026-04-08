@@ -9,9 +9,13 @@
       readonly />
     <div class="flex-1">
       <div class="flex items-center gap-3">
-        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="iconPath()"></path>
-        </svg>
+        @if (iconSrc()) {
+          <img [src]="iconSrc()!" [alt]="titleKey() | translate" class="w-8 h-8 object-contain" />
+        } @else {
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="iconPath()"></path>
+          </svg>
+        }
         <div>
           <h4 class="font-semibold text-lg text-title dark:text-white">{{ titleKey() | translate }}</h4>
           <p class="text-sm text-title dark:text-white mt-1">{{ descKey() | translate }}</p>

@@ -497,19 +497,20 @@
         "title": "Cash on Delivery",
         "desc": "Pay when you receive your order"
       },
-      "card": {
-        "title": "Debit/Credit Card",
-        "desc": "Pay securely with your card"
-      },
-      "bank": {
-        "title": "Bank Transfer",
-        "desc": "Transfer directly to our bank account"
+      "vnpay": {
+        "title": "VNPay",
+        "desc": "Pay via VNPay gateway"
       },
       "confirm": "Confirm Payment",
       "processing": "Processing...",
       "invalidRequest": "Invalid payment request",
       "invalidOrder": "Invalid order",
-      "failed": "Payment failed"
+      "failed": "Payment failed",
+      "logs": {
+        "createOrderError": "Error creating order:",
+        "createVnpayUrlError": "Create VNPay URL error:",
+        "paymentError": "Payment error:"
+      }
     },
     "paymentConfirmation": {
       "title": "Payment Confirmation",

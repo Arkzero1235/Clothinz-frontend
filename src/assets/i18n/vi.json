@@ -497,19 +497,20 @@
         "title": "Thanh toán khi nhận hàng",
         "desc": "Thanh toán khi bạn nhận đơn"
       },
-      "card": {
-        "title": "Thẻ ghi nợ/Thẻ tín dụng",
-        "desc": "Thanh toán an toàn bằng thẻ"
-      },
-      "bank": {
-        "title": "Chuyển khoản ngân hàng",
-        "desc": "Chuyển khoản trực tiếp đến tài khoản ngân hàng"
+      "vnpay": {
+        "title": "VNPay",
+        "desc": "Thanh toán qua cổng VNPay"
       },
       "confirm": "Xác nhận thanh toán",
       "processing": "Đang xử lý...",
       "invalidRequest": "Yêu cầu thanh toán không hợp lệ",
       "invalidOrder": "Đơn hàng không hợp lệ",
-      "failed": "Thanh toán thất bại"
+      "failed": "Thanh toán thất bại",
+      "logs": {
+        "createOrderError": "Lỗi tạo đơn hàng:",
+        "createVnpayUrlError": "Lỗi tạo URL VNPay:",
+        "paymentError": "Lỗi thanh toán:"
+      }
     },
     "paymentConfirmation": {
       "title": "Xác nhận thanh toán",

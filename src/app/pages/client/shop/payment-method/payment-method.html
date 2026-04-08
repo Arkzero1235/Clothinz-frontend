@@ -13,7 +13,7 @@
         <h3 class="font-semibold text-2xl md:text-3xl mb-6">{{ 'shop.payment.selectMethod' | translate }}</h3>
         
         <div class="mb-8">
-          <div class="flex justify-between items-center mb-4">
+          <div class="flex justify-between items-center">
             <span class="text-title dark:text-white">{{ 'shop.payment.orderId' | translate }}:</span>
             <span class="font-semibold text-title dark:text-white">#{{ orderId() || '-' }}</span>
           </div>
@@ -23,16 +23,19 @@
           </div>
         </div>
 
-        <div class="space-y-4 mb-8">
+        <div class="space-y-6 mb-8">
           @for (method of paymentMethods(); track method.value) {
-            <app-payment-method-option
-              [value]="method.value"
-              [titleKey]="method.titleKey"
-              [descKey]="method.descKey"
-              [iconPath]="method.iconPath"
-              [isSelected]="selectedMethod() === method.value"
-              (selectClicked)="selectMethod(method.value)"
-            />
+            <div class="py-1">
+              <app-payment-method-option
+                [value]="method.value"
+                [titleKey]="method.titleKey"
+                [descKey]="method.descKey"
+                [iconPath]="method.iconPath"
+                [iconSrc]="method.iconSrc"
+                [isSelected]="selectedMethod() === method.value"
+                (selectClicked)="selectMethod(method.value)"
+              />
+            </div>
           }
         </div>
 

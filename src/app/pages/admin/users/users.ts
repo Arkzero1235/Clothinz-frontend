@@ -145,7 +145,7 @@ export class UsersPage implements OnInit {
     );
     if (!confirmed) return;
 
-    this.userApi.updateUser(user.id, { isActive: false }).subscribe({
+    this.userApi.deleteUser(user.id).subscribe({
       next: () => {
         this.toastService.success(this.localeService.t('admin.users.deleteSuccess'));
         this.loadUsers();

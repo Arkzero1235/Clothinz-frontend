@@ -17,7 +17,6 @@ export interface UpdateProfilePayload {
 
 export interface UpdateUserPayload {
   role?: 'user' | 'admin';
-  isActive?: boolean;
 }
 
 export interface UserListParams {

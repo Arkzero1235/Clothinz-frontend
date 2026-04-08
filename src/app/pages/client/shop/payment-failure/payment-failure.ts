@@ -31,6 +31,8 @@ export class PaymentFailure implements OnInit {
   private readonly translate = inject(TranslateService);
 
   readonly orderId = signal<number | null>(null);
+  readonly amount = signal<number>(0);
+  readonly method = signal<string>('VNPAY');
   readonly errorMessage = signal<string>('');
   readonly failureIconPath = 'M6 18L18 6M6 6l12 12';
 
@@ -49,6 +51,8 @@ export class PaymentFailure implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.orderId.set(parseInt(params['orderId']) || null);
+      this.amount.set(parseFloat(params['amount']) || 0);
+      this.method.set(params['method'] || 'VNPAY');
       this.errorMessage.set(this.normalizeErrorMessage(params['error']));
     });
   }
@@ -65,7 +69,13 @@ export class PaymentFailure implements OnInit {
   onTryAgain(): void {
     const orderId = this.orderId();
     if (orderId) {
-      this.router.navigate(['/payment-method'], { queryParams: { orderId } });
+      this.router.navigate(['/payment-method'], {
+        queryParams: {
+          orderId,
+          amount: this.amount() || undefined,
+          method: this.method() || undefined
+        }
+      });
       return;
     }
     this.router.navigate(['/payment-method']);

@@ -32,7 +32,7 @@ export class WishlistStore {
 
   constructor() {
     effect(() => {
-      if (this.authStore.isAuthenticated()) {
+      if (this.authStore.isAuthenticated() && this.authStore.isUser()) {
         this.loadWishlist();
       } else {
         this.state.update(state => ({ ...state, items: [], loading: false }));

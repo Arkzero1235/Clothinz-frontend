@@ -16,7 +16,8 @@ export class PaymentMethodOptionComponent {
   value = input.required<string>();
   titleKey = input.required<string>();
   descKey = input.required<string>();
-  iconPath = input.required<string>();
+  iconPath = input<string>('');
+  iconSrc = input<string | null>(null);
   isSelected = input.required<boolean>();
   
   selectClicked = output<void>();
