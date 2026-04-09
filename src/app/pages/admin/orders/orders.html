@@ -1,36 +1,45 @@
-<div data-aos="fade-up" data-aos-duration="400" class="space-y-6">
-  <div>
-    <h1 class="text-3xl font-primary font-bold text-title dark:text-white">{{ 'admin.orders.title' | translate }}</h1>
-    <p class="mt-1 text-base text-title/60 dark:text-white/60">{{ total() }} {{ 'admin.orders.title' | translate }}</p>
+<div data-aos="fade-up" data-aos-duration="400" class="sixdo-orders space-y-4">
+  <div class="sixdo-orders__toolbar bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-2xl p-4 lg:p-5">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-primary font-bold text-title dark:text-white whitespace-nowrap">{{ 'admin.orders.title' | translate }}</h1>
+        <p class="mt-1 text-sm text-title/60 dark:text-white/60">
+          {{ total() }} {{ 'admin.orders.title' | translate }}
+        </p>
+      </div>
+
+      <div class="w-full lg:w-[360px]">
+        <admin-search [placeholder]="'admin.orders.search' | translate" (search)="onSearch($event)" />
+      </div>
+    </div>
   </div>
 
-  <div class="bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-xl p-4 space-y-4">
-    <div class="flex flex-wrap gap-2">
+  <div class="sixdo-orders__chips bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-2xl p-3 lg:p-4">
+    <div class="flex flex-wrap gap-2.5">
       @for (status of statuses(); track status) {
         <button
           (click)="onFilterChange(status)"
-          class="h-9 px-4 text-xs font-primary font-semibold border transition-all duration-200 uppercase tracking-wide"
+          class="h-9 px-4 text-xs font-primary font-semibold border transition-all duration-200 uppercase tracking-wide rounded-lg"
           [ngClass]="getFilterButtonClasses(status)">
           {{ status === 'ALL' ? ('admin.orders.filterAll' | translate) : ('admin.orders.statuses.' + status | translate) }}
         </button>
       }
     </div>
-
-    <admin-search [placeholder]="'admin.orders.search' | translate" (search)="onSearch($event)" />
   </div>
 
-  <app-admin-table
-    [loading]="loading()"
-    [empty]="orders().length === 0"
-    emptyIcon="lnr-cart"
-    [emptyMessage]="'admin.orders.noOrders'"
-    [totalPages]="totalPages()"
-    [currentPage]="currentPage()"
-    (pageChange)="onPageChange($event)"
-  >
-    <div mobile class="divide-y divide-bdr-clr dark:divide-bdr-clr-drk">
+  <div class="sixdo-orders__board bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-2xl overflow-hidden">
+    <app-admin-table
+      [loading]="loading()"
+      [empty]="orders().length === 0"
+      emptyIcon="lnr-cart"
+      [emptyMessage]="'admin.orders.noOrders'"
+      [totalPages]="totalPages()"
+      [currentPage]="currentPage()"
+      (pageChange)="onPageChange($event)"
+    >
+    <div mobile class="sixdo-orders__mobile-list divide-y divide-bdr-clr dark:divide-bdr-clr-drk">
       @for (order of orders(); track order.id) {
-        <div class="p-4 space-y-3">
+        <div class="sixdo-orders__mobile-card p-4 space-y-3">
           <button type="button" class="w-full text-left space-y-3" (click)="toggleDetail(order.id)">
             <div class="flex items-start justify-between gap-3">
               <div class="min-w-0">
@@ -74,7 +83,7 @@
           </div>
 
           @if (expandedOrderId() === order.id) {
-            <div class="mt-3 overflow-hidden rounded-lg bg-[#F8F8F9] dark:bg-title border border-bdr-clr dark:border-bdr-clr-drk">
+            <div class="sixdo-orders__mobile-expand mt-3 overflow-hidden rounded-lg bg-[#F8F8F9] dark:bg-title border border-bdr-clr dark:border-bdr-clr-drk">
               @if (loadingDetail()) {
                 <app-loading-spinner size="sm" />
               } @else if (expandedOrder()) {
@@ -155,7 +164,7 @@
     </div>
 
     <div table>
-      <table class="w-full min-w-[900px] table-auto">
+      <table class="sixdo-orders__table w-full min-w-[900px] table-auto">
         <thead
           appSortableTableHeader
           [columns]="tableColumns"
@@ -165,7 +174,7 @@
         ></thead>
         <tbody>
           @for (order of orders(); track order.id) {
-            <tr class="border-b border-bdr-clr/50 dark:border-bdr-clr-drk/50 hover:bg-primary/5 dark:hover:bg-primary/5 transition-colors duration-200 cursor-pointer"
+            <tr class="sixdo-orders__row border-b border-bdr-clr/50 dark:border-bdr-clr-drk/50 hover:bg-primary/5 dark:hover:bg-primary/5 transition-colors duration-200 cursor-pointer"
               (click)="toggleDetail(order.id)">
               <td class="px-4 py-3.5 align-middle">
                 <div class="flex flex-col gap-2 min-w-0">
@@ -212,7 +221,7 @@
             @if (expandedOrderId() === order.id) {
               <tr>
                 <td colspan="5" class="!p-0 overflow-hidden">
-                  <div data-aos="fade-down" data-aos-duration="300" class="overflow-hidden bg-[#F8F8F9] dark:bg-title border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+                  <div data-aos="fade-down" data-aos-duration="300" class="sixdo-orders__desk-expand overflow-hidden bg-[#F8F8F9] dark:bg-title border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
                     @if (loadingDetail()) {
                       <app-loading-spinner size="sm" />
                     } @else if (expandedOrder()) {
@@ -329,4 +338,5 @@
       </table>
     </div>
   </app-admin-table>
+  </div>
 </div>

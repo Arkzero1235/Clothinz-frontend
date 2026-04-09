@@ -1,11 +1,15 @@
 <div data-aos="fade-up" data-aos-duration="400" class="space-y-6">
-  <div>
-    <h1 class="text-3xl font-primary font-bold text-title dark:text-white">{{ 'admin.users.title' | translate }}</h1>
-    <p class="mt-1 text-base text-title/60 dark:text-white/60">{{ total() }} {{ 'admin.users.title' | translate }}</p>
-  </div>
+  <div class="bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-2xl p-4 lg:p-5">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-primary font-bold text-title dark:text-white whitespace-nowrap">{{ 'admin.users.title' | translate }}</h1>
+        <p class="mt-1 text-sm text-title/60 dark:text-white/60">{{ total() }} {{ 'admin.users.title' | translate }}</p>
+      </div>
 
-  <div class="bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-xl p-4">
-    <admin-search [placeholder]="'admin.users.search' | translate" (search)="onSearch($event)" />
+      <div class="w-full lg:w-[360px]">
+        <admin-search [placeholder]="'admin.users.search' | translate" (search)="onSearch($event)" />
+      </div>
+    </div>
   </div>
 
   <app-admin-table

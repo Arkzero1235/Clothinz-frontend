@@ -53,12 +53,28 @@ export class DashboardPage implements OnInit {
 
   readonly statCards = computed<StatCard[]>(() => [
     {
+      labelKey: 'admin.dashboard.totalOrders',
+      icon: 'lnr lnr-bubble',
+      iconBgClass: 'bg-green-500/10',
+      iconColorClass: 'text-green-500',
+      hoverBgClass: 'group-hover:bg-green-500',
+      value: () => this.totalOrders()
+    },
+    {
       labelKey: 'admin.dashboard.totalUsers',
-      icon: 'lnr lnr-users',
+      icon: 'lnr lnr-heart',
       iconBgClass: 'bg-primary/10',
       iconColorClass: 'text-primary',
       hoverBgClass: 'group-hover:bg-primary',
       value: () => this.totalUsers()
+    },
+    {
+      labelKey: 'admin.dashboard.totalRevenue',
+      icon: 'lnr lnr-star',
+      iconBgClass: 'bg-yellow-500/10',
+      iconColorClass: 'text-yellow-500',
+      hoverBgClass: 'group-hover:bg-yellow-500',
+      value: () => `${this.formatVND(this.totalRevenue())}₫`
     },
     {
       labelKey: 'admin.dashboard.totalProducts',
@@ -67,22 +83,6 @@ export class DashboardPage implements OnInit {
       iconColorClass: 'text-blue-500',
       hoverBgClass: 'group-hover:bg-blue-500',
       value: () => this.totalProducts()
-    },
-    {
-      labelKey: 'admin.dashboard.totalOrders',
-      icon: 'lnr lnr-cart',
-      iconBgClass: 'bg-green-500/10',
-      iconColorClass: 'text-green-500',
-      hoverBgClass: 'group-hover:bg-green-500',
-      value: () => this.totalOrders()
-    },
-    {
-      labelKey: 'admin.dashboard.totalRevenue',
-      icon: 'lnr lnr-diamond',
-      iconBgClass: 'bg-yellow-500/10',
-      iconColorClass: 'text-yellow-500',
-      hoverBgClass: 'group-hover:bg-yellow-500',
-      value: () => `${this.formatVND(this.totalRevenue())}₫`
     }
   ]);
 

@@ -3,6 +3,38 @@
   aspect-ratio: 2 / 3;
 }
 
+.sixdo-product-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sixdo-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+}
+
+:host-context(.dark) .sixdo-product-card {
+  background: #17181c;
+}
+
+.sixdo-card-action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+}
+
+:host-context(.dark) .sixdo-card-action-btn {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(18, 19, 22, 0.96);
+  color: #f8fafc;
+}
+
 @supports not (aspect-ratio: 2 / 3) {
   .aspect-2-3 {
     position: relative;

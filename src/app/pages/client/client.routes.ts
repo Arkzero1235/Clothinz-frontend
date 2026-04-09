@@ -53,11 +53,6 @@ export const clientRoutes: Routes = [
     loadComponent: () => import('./shop/payment-method/payment-method').then(m => m.PaymentMethod)
   },
   {
-    path: 'payment-confirmation',
-    canActivate: [authGuard, clientGuard],
-    loadComponent: () => import('./shop/payment-confirmation/payment-confirmation').then(m => m.PaymentConfirmation)
-  },
-  {
     path: 'payment-success',
     canActivate: [authGuard, clientGuard],
     loadComponent: () => import('./shop/payment-success/payment-success').then(m => m.PaymentSuccess)

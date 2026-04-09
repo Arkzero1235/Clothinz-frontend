@@ -46,7 +46,18 @@
   <div class="container-fluid max-w-[1720px] mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       @for (promo of promoBlocks(); track promo.image; let i = $index) {
-        <div class="relative group overflow-hidden cursor-pointer" routerLink="/shop" data-aos="fade-up" [attr.data-aos-delay]="i * 100">
+        <div
+          class="relative group overflow-hidden cursor-pointer"
+          [ngClass]="{
+            'md:rounded-tl-2xl': i === 0,
+            'md:rounded-tr-2xl': i === 2,
+            'md:rounded-bl-2xl': i === 6,
+            'md:rounded-br-2xl': i === 8
+          }"
+          routerLink="/shop"
+          data-aos="fade-up"
+          [attr.data-aos-delay]="i * 100"
+        >
           <img class="w-full h-auto transition-transform duration-700 group-hover:scale-105" [src]="promo.image" [alt]="'pdct-' + (i + 1)">
         </div>
       }

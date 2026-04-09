@@ -1,1 +1,30 @@
-/* Product attributes styles */
+.sixdo-attributes-wrap {
+	border: 1px solid #e5e7eb;
+	border-radius: 16px;
+	padding: 16px;
+	background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+}
+
+:host-context(.dark) .sixdo-attributes-wrap {
+	border-color: rgba(255, 255, 255, 0.16);
+	background: #141518;
+}
+
+.sixdo-attribute-row {
+	padding: 10px 0;
+	border-bottom: 1px dashed #dbe1e7;
+}
+
+.sixdo-attribute-row:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+:host-context(.dark) .sixdo-attribute-row {
+	border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+.sixdo-attribute-chip {
+	min-width: 56px;
+	text-align: center;
+}

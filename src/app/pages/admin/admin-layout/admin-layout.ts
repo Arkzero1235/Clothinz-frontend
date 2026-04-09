@@ -40,8 +40,9 @@ export class AdminLayout implements OnInit {
   readonly navItems = signal<NavItem[]>([
     { path: '/admin/dashboard', icon: 'lnr lnr-chart-bars', labelKey: 'admin.sidebar.dashboard' },
     { path: '/admin/products', icon: 'lnr lnr-tag', labelKey: 'admin.sidebar.products' },
-    { path: '/admin/orders', icon: 'lnr lnr-cart', labelKey: 'admin.sidebar.orders' },
-    { path: '/admin/users', icon: 'lnr lnr-users', labelKey: 'admin.sidebar.users' },
+    { path: '/admin/products/categories', icon: 'lnr lnr-list', labelKey: 'admin.categories.title' },
+    { path: '/admin/users', icon: 'lnr lnr-user', labelKey: 'admin.sidebar.users' },
+    { path: '/admin/orders', icon: 'lnr lnr-briefcase', labelKey: 'admin.sidebar.orders' },
   ]);
 
   readonly userImage = computed(() => 
@@ -60,28 +61,44 @@ export class AdminLayout implements OnInit {
     Aos.init();
   }
 
-  toggleSidebar(): void {
+  togglePanel(): void {
     this.sidebarOpen.update(v => !v);
   }
 
-  closeSidebar(): void {
+  hidePanel(): void {
     this.sidebarOpen.set(false);
   }
 
-  toggleCollapse(): void {
+  shiftDensity(): void {
     this.sidebarCollapsed.update(v => !v);
   }
 
-  getDesktopNavItemClasses(isActive: boolean): Record<string, boolean> {
+  resolveNavActive(path: string, rlaIsActive: boolean): boolean {
+    const current = this.router.url;
+
+    if (path === '/admin/products/categories') {
+      return current.startsWith('/admin/products/categories');
+    }
+
+    if (path === '/admin/products') {
+      return current.startsWith('/admin/products') && !current.startsWith('/admin/products/categories');
+    }
+
+    return rlaIsActive;
+  }
+
+  buildDesktopNavState(isActive: boolean): Record<string, boolean> {
     return {
       'justify-center': this.sidebarCollapsed(),
       'gap-3': !this.sidebarCollapsed(),
-      'border-primary': isActive,
+      'ring-1': true,
+      'ring-primary/35': isActive,
       'text-primary': isActive,
       'bg-primary/5': isActive,
       'dark:bg-primary/10': isActive,
       'font-semibold': isActive,
-      'border-transparent': !isActive,
+      'ring-bdr-clr': !isActive,
+      'dark:ring-bdr-clr-drk': !isActive,
       'text-title': !isActive,
       'dark:text-white': !isActive,
       'hover:text-primary': !isActive,
@@ -91,14 +108,16 @@ export class AdminLayout implements OnInit {
     };
   }
 
-  getMobileNavItemClasses(isActive: boolean): Record<string, boolean> {
+  buildMobileNavState(isActive: boolean): Record<string, boolean> {
     return {
-      'border-primary': isActive,
+      'ring-1': true,
+      'ring-primary/35': isActive,
       'text-primary': isActive,
       'bg-primary/5': isActive,
       'dark:bg-primary/10': isActive,
       'font-semibold': isActive,
-      'border-transparent': !isActive,
+      'ring-bdr-clr': !isActive,
+      'dark:ring-bdr-clr-drk': !isActive,
       'text-title': !isActive,
       'dark:text-white': !isActive,
       'hover:text-primary': !isActive,
@@ -107,7 +126,7 @@ export class AdminLayout implements OnInit {
     };
   }
 
-  onFileSelected(event: Event): void {
+  onAvatarChosen(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
@@ -127,13 +146,13 @@ export class AdminLayout implements OnInit {
       reader.onload = () => {
         const imageBase64 = reader.result as string;
         this.previewImage.set(imageBase64);
-        this.uploadImage(imageBase64);
+        this.commitAvatarUpdate(imageBase64);
       };
       reader.readAsDataURL(file);
     }
   }
 
-  private uploadImage(imageBase64: string): void {
+  private commitAvatarUpdate(imageBase64: string): void {
     const user = this.authStore.currentUser();
     if (!user) return;
 
@@ -156,7 +175,7 @@ export class AdminLayout implements OnInit {
     });
   }
 
-  async logout(): Promise<void> {
+  async performLogout(): Promise<void> {
     const confirmed = await this.confirmService.confirm(
       this.localeService.t('admin.sidebar.logout') + '?',
       { title: this.localeService.t('admin.common.confirm') }

@@ -10,7 +10,7 @@
         <p class="text-xs opacity-90">{{ 'chatbot.subtitle' | translate }}</p>
       </div>
       <button (click)="toggleChat()" class="rounded p-1 transition hover:bg-white/20" [attr.aria-label]="'chatbot.closeLabel' | translate">
-        <span class="text-lg leading-none">&#10006;</span>
+        <i class="mdi mdi-close text-lg leading-none"></i>
       </button>
     </div>
 
@@ -68,6 +68,6 @@
     class="pointer-events-auto flex size-14 items-center justify-center rounded-full bg-primary text-2xl text-white shadow-xl transition duration-300 hover:scale-105 hover:opacity-90 animate-pulse"
     [attr.aria-label]="'chatbot.openLabel' | translate"
   >
-    <span>&#128172;</span>
+    <i class="mdi mdi-chat text-3xl"></i>
   </button>
 </div>
