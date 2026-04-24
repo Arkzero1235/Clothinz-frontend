@@ -1,1 +1,1 @@
-# sixdo-frontend
+# clothinz-frontend

@@ -61,7 +61,7 @@
     "popularTags": "Thẻ phổ biến"
   },
   "footer": {
-    "aboutText": "Sixdo là cửa hàng thời trang nam hiện đại, cung cấp xu hướng mới nhất về áo, túi, ví và thắt lưng cho phái mạnh đương đại.",
+    "aboutText": "Clothinz là cửa hàng thời trang nam hiện đại, cung cấp xu hướng mới nhất về áo, túi, ví và thắt lưng cho phái mạnh đương đại.",
     "subscribeTitle": "Đăng ký nhận tin",
     "emailPlaceholder": "Nhập email của bạn",
     "subscribe": "Đăng ký",
@@ -71,7 +71,7 @@
     "categories": "Danh mục",
     "aboutUs": "Về chúng tôi",
     "allProducts": "Tất cả sản phẩm",
-    "copyright": "© {{year}} Sixdo Store."
+    "copyright": "© {{year}} Clothinz Store."
   },
   "profile": {
     "myProfile": "Hồ sơ của tôi",
@@ -267,7 +267,7 @@
     "login": {
       "label": "Đăng nhập",
       "title": "Chào mừng quay lại!",
-      "subtitle": "Mua & bán sản phẩm chỉ tại Sixdo Store"
+      "subtitle": "Mua & bán sản phẩm chỉ tại Clothinz Store"
     },
     "register": "Đăng ký",
     "registerTitle": "Tạo tài khoản mới",
@@ -287,7 +287,7 @@
     "resetComingSoon": "Tính năng đặt lại mật khẩu sẽ sớm được cập nhật",
     "loginSuccess": "Đăng nhập thành công",
     "loginFailed": "Đăng nhập thất bại",
-    "registerSuccess": "Đăng ký thành công! Chào mừng đến với Sixdo Store",
+    "registerSuccess": "Đăng ký thành công! Chào mừng đến với Clothinz Store",
     "registerFailed": "Đăng ký thất bại",
     "errors": {
       "emailRequired": "Email là bắt buộc",
@@ -364,7 +364,7 @@
       "subtitle": "BÀI VIẾT MỚI"
     },
     "stats": {
-      "title": "Sixdo qua những con số",
+      "title": "Clothinz qua những con số",
       "subtitle": "Hàng nghìn khách hàng tin tưởng lựa chọn chúng tôi",
       "customers": {
         "title": "Khách hàng hài lòng",
@@ -387,7 +387,7 @@
   },
   "special": {
     "thankYou": {
-      "title": "Cảm ơn bạn đã mua sắm tại Sixdo",
+      "title": "Cảm ơn bạn đã mua sắm tại Clothinz",
       "descText": "Vui lòng kiểm tra email để tải hóa đơn . Hoặc",
       "descLink": "Nhấp vào đây",
       "button": "Quay lại trang chủ"
@@ -565,8 +565,8 @@
       "deliveryDate": "Ngày giao hàng",
       "status": "Trạng thái",
       "shopInfo": "Thông tin cửa hàng",
-      "shopName": "Sixdo Store",
-      "shopAddress1": "123 Sixdo Street",
+      "shopName": "Clothinz Store",
+      "shopAddress1": "123 Clothinz Street",
       "shopAddress2": "TP. Hồ Chí Minh, Việt Nam",
       "customerInfo": "Thông tin khách hàng",
       "note": "Ghi chú",
@@ -600,8 +600,8 @@
     "title": "Về chúng tôi",
     "story": {
       "title": "Hành trình câu chuyện",
-      "paragraph1": "Tại Sixdo Store, câu chuyện của chúng tôi là sự đam mê, tay nghề và khát khao hoàn thiện. Chúng tôi bắt đầu với tầm nhìn thay đổi cách phái mạnh trải nghiệm thời trang – không chỉ là áo, túi, ví hay thắt lưng mà còn là sự thể hiện phong cách và sự tự tin. Với tình yêu thiết kế và cam kết chất lượng, chúng tôi tạo nên những sản phẩm vượt thời gian, tỉ mỉ từ chất liệu đến đường may.",
-      "paragraph2": "Qua nhiều năm, sự đổi mới và đặt khách hàng làm trung tâm đã giúp chúng tôi phát triển và xây dựng uy tín. Từ khởi đầu khiêm tốn, Sixdo Store trở thành thương hiệu đáng tin cậy cung cấp thời trang nam vượt mong đợi."
+      "paragraph1": "Tại Clothinz Store, câu chuyện của chúng tôi là sự đam mê, tay nghề và khát khao hoàn thiện. Chúng tôi bắt đầu với tầm nhìn thay đổi cách phái mạnh trải nghiệm thời trang – không chỉ là áo, túi, ví hay thắt lưng mà còn là sự thể hiện phong cách và sự tự tin. Với tình yêu thiết kế và cam kết chất lượng, chúng tôi tạo nên những sản phẩm vượt thời gian, tỉ mỉ từ chất liệu đến đường may.",
+      "paragraph2": "Qua nhiều năm, sự đổi mới và đặt khách hàng làm trung tâm đã giúp chúng tôi phát triển và xây dựng uy tín. Từ khởi đầu khiêm tốn, Clothinz Store trở thành thương hiệu đáng tin cậy cung cấp thời trang nam vượt mong đợi."
     },
     "why": {
       "title": "Vì sao chọn chúng tôi",

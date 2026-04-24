@@ -61,7 +61,7 @@
     "popularTags": "Popular Tags"
   },
   "footer": {
-    "aboutText": "Sixdo is a modern men's fashion store offering the latest trends in shirts, bags, wallets, and belts for the contemporary man.",
+    "aboutText": "Clothinz is a modern men's fashion store offering the latest trends in shirts, bags, wallets, and belts for the contemporary man.",
     "subscribeTitle": "Subscribe Newsletter",
     "emailPlaceholder": "Enter your email address",
     "subscribe": "Subscribe",
@@ -71,7 +71,7 @@
     "categories": "Categories",
     "aboutUs": "About Us",
     "allProducts": "All Products",
-    "copyright": "© {{year}} Sixdo Store."
+    "copyright": "© {{year}} Clothinz Store."
   },
   "profile": {
     "myProfile": "My Profile",
@@ -267,7 +267,7 @@
     "login": {
       "label": "Login",
       "title": "Welcome back !",
-      "subtitle": "Buy & sale your product on Sixdo Store"
+      "subtitle": "Buy & sale your product on Clothinz Store"
     },
     "register": "Register",
     "registerTitle": "Create New Account",
@@ -287,7 +287,7 @@
     "resetComingSoon": "Password reset feature will be implemented soon",
     "loginSuccess": "Login successfully",
     "loginFailed": "Login failed",
-    "registerSuccess": "Registration successful! Welcome to Sixdo Store",
+    "registerSuccess": "Registration successful! Welcome to Clothinz Store",
     "registerFailed": "Registration failed",
     "errors": {
       "emailRequired": "Email is required",
@@ -364,7 +364,7 @@
       "subtitle": "LATEST BLOG"
     },
     "stats": {
-      "title": "Sixdo in Numbers",
+      "title": "Clothinz in Numbers",
       "subtitle": "Join thousands of satisfied customers who trust us for their fashion needs",
       "customers": {
         "title": "Happy Customers",
@@ -387,7 +387,7 @@
   },
   "special": {
     "thankYou": {
-      "title": "For Shopping with Sixdo",
+      "title": "For Shopping with Clothinz",
       "descText": "Please Check your email for Download Invoice . Or",
       "descLink": "Click here",
       "button": "Back to home"
@@ -565,8 +565,8 @@
       "deliveryDate": "Delivery Date",
       "status": "Status",
       "shopInfo": "Shop Information",
-      "shopName": "Sixdo Store",
-      "shopAddress1": "123 Sixdo Street",
+      "shopName": "Clothinz Store",
+      "shopAddress1": "123 Clothinz Street",
       "shopAddress2": "Ho Chi Minh City, Vietnam",
       "customerInfo": "Customer Information",
       "note": "Note",
@@ -600,7 +600,7 @@
     "title": "About Us",
     "story": {
       "title": "Our Story Journey",
-      "paragraph1": "At Sixdo Store, our story is one of passion, craftsmanship, and a relentless pursuit of excellence. It all began with a vision to redefine the way men experience fashion – not just as clothing like shirts, bags, wallets, or belts, but as expressions of personal style and confidence. Driven by a love for design and a commitment to quality, we embarked on a journey to create fashion that transcends trends and stands the test of time. Each piece in our collection tells a story of meticulous attention to detail, from the selection of premium materials to the precision of tailoring.",
+      "paragraph1": "At Clothinz Store, our story is one of passion, craftsmanship, and a relentless pursuit of excellence. It all began with a vision to redefine the way men experience fashion – not just as clothing like shirts, bags, wallets, or belts, but as expressions of personal style and confidence. Driven by a love for design and a commitment to quality, we embarked on a journey to create fashion that transcends trends and stands the test of time. Each piece in our collection tells a story of meticulous attention to detail, from the selection of premium materials to the precision of tailoring.",
       "paragraph2": "Over the years, our dedication to innovation and customer satisfaction has fueled our growth and earned us a reputation for excellence. From humble beginnings, we've grown into a trusted name in the industry, known for delivering men's fashion that exceeds expectations."
     },
     "why": {
