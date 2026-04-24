@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="flex-1">
                                         <h5 class="font-semibold leading-none mt-2">
-                                            <a [routerLink]="['/product-details', item.product.slug]">{{item.product.name}}</a>
+                                            <a [routerLink]="['/product-details', item.product.slug || item.product.id]">{{item.product.name}}</a>
                                         </h5>
                                         @if (item.selectedAttributes && item.selectedAttributes.length > 0) {
                                             <div class="flex flex-col gap-1 mt-2">
@@ -102,7 +102,7 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <h5 class="font-semibold text-title dark:text-white truncate pr-6">
-                                    <a [routerLink]="['/product-details', item.product.slug]">{{item.product.name}}</a>
+                                    <a [routerLink]="['/product-details', item.product.slug || item.product.id]">{{item.product.name}}</a>
                                 </h5>
                                 
                                 <div class="mt-1 flex flex-wrap gap-2">

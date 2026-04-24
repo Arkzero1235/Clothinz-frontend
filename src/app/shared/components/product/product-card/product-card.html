@@ -1,38 +1,35 @@
 <div [class]="classList()">
   @for (item of productList(); track item.id) {
     @if (variant() === 'default') {
-      <div class="group border border-bdr-clr dark:border-bdr-clr-drk rounded-xl overflow-hidden bg-white dark:bg-dark-secondary">
+      <div class="sixdo-product-card group border border-bdr-clr dark:border-bdr-clr-drk rounded-xl overflow-hidden bg-white dark:bg-dark-secondary">
         <div class="relative overflow-hidden aspect-2-3 rounded-t-xl">
           <a [routerLink]="['/product-details',item.slug || item.id]" class="block w-full h-full">
             <img class="w-full h-full object-cover transform group-hover:scale-110 duration-300" [src]="item.thumbnail" [alt]="item.name">
           </a>
-          <div class="absolute z-10 top-[70%] right-3  opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
+          <div class="absolute z-10 top-4 right-4 opacity-0 duration-300 transition-all group-hover:opacity-100 group-hover:translate-y-0 -translate-y-2 flex flex-col items-end gap-2">
             @if (actionsTemplate()) {
               <ng-container *ngTemplateOutlet="actionsTemplate(); context: { $implicit: item }" />
             } @else {
-              <button (click)="toggleWishlist(item, $event)" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                <i [class]="isInWishlist(item.id) ? 'mdi mdi-cards-heart dark:text-white text-[24px] text-red-500' : 'mdi mdi-cards-heart-outline dark:text-white text-[24px]'"></i>
-                <span class="mt-1">{{ isInWishlist(item.id) ? ('product.inWishlist' | translate) : ('wishlist.add' | translate) }}</span>
+              <button (click)="toggleWishlist(item, $event)" class="sixdo-card-action-btn" [attr.aria-label]="isInWishlist(item.id) ? ('product.inWishlist' | translate) : ('wishlist.add' | translate)">
+                <i [class]="isInWishlist(item.id) ? 'mdi mdi-cards-heart text-[20px] text-red-500' : 'mdi mdi-cards-heart-outline text-[20px]'"></i>
               </button>
-              <button (click)="addToCart(item, $event)" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>
-                <span class="mt-1">{{ 'product.addToCart' | translate }}</span>
+              <button (click)="addToCart(item, $event)" class="sixdo-card-action-btn" [attr.aria-label]="'product.addToCart' | translate">
+                <i class="mdi mdi-shopping-outline text-[20px]"></i>
               </button>
-              <button (click)="quickView(item, $event)" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon quick-view">
-                <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>
-                <span class="mt-1">{{ 'product.quickView' | translate }}</span>
+              <button (click)="quickView(item, $event)" class="sixdo-card-action-btn quick-view" [attr.aria-label]="'product.quickView' | translate">
+                <i class="mdi mdi-eye-outline text-[20px]"></i>
               </button>
             }
           </div>
         </div>
         <div class="md:px-2 lg:px-4 xl:px-6 lg:pt-6 pt-5 pb-5 sm:pb-6 flex gap-4 md:gap-5 flex-col">
-          <h4 class="font-medium leading-none dark:text-white text-base sm:text-lg">{{formatVND(item.price)}}₫</h4>
           <div>
             <h5 class="font-normal dark:text-white text-lg sm:text-xl leading-[1.5]">
               <a [routerLink]="['/product-details',item.slug || item.id]" class="text-underline block truncate">{{item.name}}</a>
             </h5>
             <app-rating [rating]="0" [showStock]="true" [stock]="item.stock" class="mt-1" />
           </div>
+          <h4 class="font-medium leading-none dark:text-white text-base sm:text-lg">{{formatVND(item.price)}}₫</h4>
         </div>
       </div>
     }

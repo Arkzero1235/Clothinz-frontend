@@ -32,7 +32,7 @@ export class SearchPopup {
   readonly isSearching = signal(false);
   readonly formatVND = formatVND;
 
-  readonly popularTags = ['Dress', 'Coat', 'Pants', 'Jackets', 'Skirt'];
+  readonly popularTags = ['Dress', 'Blouse', 'Glasses', 'Ao Dai', 'Handbag'];
 
   constructor() {
     effect(() => {

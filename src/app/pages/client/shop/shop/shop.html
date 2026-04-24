@@ -7,16 +7,16 @@
 
 <div class="s-py-100" >
   <div class="container">
-    <div class="max-w-[1477px] mx-auto flex items-start justify-between gap-8 md:gap-10 flex-col lg:flex-row">
-      <div class="grid gap-[15px] lg:max-w-[300px] w-full sm:grid-cols-2 lg:grid-cols-1" data-aos="fade-up">
-        <div class="bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-[30px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
-          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'shop.categories.title' | translate }}</h4>
+    <div class="sixdo-shop-shell max-w-[1477px] mx-auto flex items-start justify-between gap-8 md:gap-10 flex-col lg:flex-row">
+      <aside class="sixdo-filter-stack grid gap-[15px] lg:max-w-[310px] w-full sm:grid-cols-2 lg:grid-cols-1" data-aos="fade-up">
+        <div class="sixdo-filter-card bg-[#F8F8F9] dark:bg-dark-secondary p-4 sm:p-5 border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-4 sm:mb-4 flex items-center"><i class="text-primary text-[24px]"></i>{{ 'shop.categories.title' | translate }}</h4>
           @if (loadingCategories()) {
             <div class="text-center py-4">{{ 'shop.categories.loading' | translate }}</div>
           } @else if (displayCategories().length === 0) {
             <div class="text-center py-4">{{ 'shop.categories.empty' | translate }}</div>
           } @else {
-            <div class="grid gap-5">
+            <div class="grid gap-3">
               @for (category of displayCategories(); track category.id) {
                 <label class="categoryies-iteem flex items-center gap-[10px] cursor-pointer">
                   <input 
@@ -41,22 +41,8 @@
           }
         </div>
 
-        <div class="bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-[30px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
-          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'shop.sort.title' | translate }}</h4>
-          <div class="nice-select select-active select-white" [class.open]="isopen()" (click)="toggleDropdown()">
-            <span class="current">{{ selectedSortLabelKey() | translate }}</span>
-            <ul class="list">
-              @for (sortOption of sortOptions(); track sortOption.value) {
-                <li class="option" (click)="handleSortSelect(sortOption.value, $event)">
-                  {{ sortOption.labelKey | translate }}
-                </li>
-              }
-            </ul>
-          </div>
-        </div>
-
-        <div class="bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-[30px] border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
-          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">{{ 'shop.priceRange.title' | translate }}</h4>
+        <div class="sixdo-filter-card bg-[#F8F8F9] dark:bg-dark-secondary p-4 sm:p-5 border border-bdr-clr dark:border-bdr-clr-drk rounded-xl">
+          <h4 class="font-medium leading-none text-xl sm:text-2xl mb-4 sm:mb-4 flex items-center"><i class=" text-primary text-[24px]"></i>{{ 'shop.priceRange.title' | translate }}</h4>
           <div class="price-filter-content">
             <ngx-slider class="js-range-slider" [(value)]="value" [(highValue)]="highValue" [options]="options()"></ngx-slider>
             <div class="price-filter">
@@ -66,20 +52,46 @@
             </div>
           </div>
         </div>
-      </div>
+      </aside>
 
-      <div class="lg:max-w-[1100px] w-full" data-aos="fade-up" data-aos-delay="200">
-        <app-product-card 
-          [classList]="'grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-8'" 
-          [productList]="productList()"
-          (onAddToCart)="onAddToCart($event)"
-          (onQuickView)="handleQuickView($event)"
-        />
+      <section class="lg:max-w-[1100px] w-full" data-aos="fade-up" data-aos-delay="200">
+        <div class="sixdo-shop-toolbar">
+          <div>
+            <p class="text-lg sm:text-xl font-semibold">{{ 'shop.title' | translate }}</p>
+          </div>
+          <div class="sixdo-sort-wrap">
+            <span class="sixdo-sort-label"><i class=" text-primary"></i> {{ 'shop.sort.title' | translate }}</span>
+            <div class="nice-select select-active select-white" [class.open]="isopen()" (click)="toggleDropdown()">
+              <span class="current">{{ selectedSortLabelKey() | translate }}</span>
+              <ul class="list">
+                @for (sortOption of sortOptions(); track sortOption.value) {
+                  <li class="option" (click)="handleSortSelect(sortOption.value, $event)">
+                    {{ sortOption.labelKey | translate }}
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        @if (loading()) {
+          <div class="sixdo-shop-empty">{{ 'common.loading' | translate }}</div>
+        } @else if (productList().length === 0) {
+          <div class="sixdo-shop-empty">{{ 'shop.errors.noProductsFiltered' | translate }}</div>
+        } @else {
+          <app-product-card 
+            [classList]="'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7'" 
+            [productList]="productList()"
+            (onAddToCart)="onAddToCart($event)"
+            (onQuickView)="handleQuickView($event)"
+          />
+        }
+
         <div class="mt-10 md:mt-12 flex items-center justify-center gap-[10px]">
           <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()" (pageChange)="goToPage($event)" />
         </div>
 
-      </div>
+      </section>
     </div>
   </div>
 </div>

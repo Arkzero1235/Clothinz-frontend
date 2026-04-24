@@ -17,7 +17,7 @@
       } @else {
         <div class="hdr-cart-item pr-4 md:pr-5">
           @for (item of cartStore.items(); track item.id) {
-          <a [routerLink]="['/product-details', item.product.slug]"
+          <a [routerLink]="['/product-details', item.product.slug || item.product.id]"
             class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
             <img class="w-[60px] aspect-[2/3] object-cover" [src]="item.product.thumbnail" [alt]="item.product.name">
             <div>

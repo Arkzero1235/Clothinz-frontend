@@ -1,13 +1,15 @@
 <div data-aos="fade-up" data-aos-duration="400" class="space-y-6">
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-    <div>
-      <h1 class="text-3xl font-primary font-bold text-title dark:text-white">{{ 'admin.categories.title' | translate }}</h1>
-      <p class="mt-1 text-base text-title/60 dark:text-white/60">{{ categories().length }} {{ 'admin.categories.title' | translate }}</p>
+  <div class="bg-white dark:bg-dark-secondary border border-bdr-clr dark:border-bdr-clr-drk rounded-2xl p-4 lg:p-5">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-primary font-bold text-title dark:text-white whitespace-nowrap">{{ 'admin.categories.title' | translate }}</h1>
+        <p class="mt-1 text-sm text-title/60 dark:text-white/60">{{ categories().length }} {{ 'admin.categories.title' | translate }}</p>
+      </div>
+      <button (click)="openCreateForm()">
+        <app-button
+          [text]="'admin.categories.addCategory' | translate" />
+      </button>
     </div>
-    <button (click)="openCreateForm()">
-      <app-button
-        [text]="'admin.categories.addCategory' | translate" />
-    </button>
   </div>
 
   @if (showForm()) {

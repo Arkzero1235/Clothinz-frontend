@@ -210,16 +210,16 @@
     },
     "reviews": {
       "1": {
-        "name": "Sarah Johnson",
-        "desc": "Mình rất thích sản phẩm này! Chất liệu cao cấp và form vừa vặn. Thiết kế thanh lịch, phù hợp cả đi chơi lẫn dự tiệc."
+        "name": "Nguyễn Thu Hà",
+        "desc": "Mình rất ưng set quần và áo này! Chất vải mềm, thoáng và lên form rất tôn dáng. Mặc đi làm hay đi chơi đều đẹp, phối đồ cũng cực dễ."
       },
       "2": {
-        "name": "Emily Chen",
-        "desc": "Đường may tinh tế, màu sắc đẹp và chất liệu sang. Rất đáng mua cho ai yêu thời trang chất lượng."
+        "name": "Trần Minh Anh",
+        "desc": "Váy mặc lên rất xinh, đường may chỉn chu và màu đúng như ảnh. Form ôm vừa phải, giúp mình trông nữ tính mà vẫn thoải mái cả ngày."
       },
       "3": {
-        "name": "Maria Garcia",
-        "desc": "Vượt mong đợi! Kiểu dáng hiện đại mà vẫn dễ mặc. Rất thoải mái và nhận được nhiều lời khen."
+        "name": "Lê Phương Thảo",
+        "desc": "Quần suông và áo kiểu phối với nhau quá hợp! Thiết kế hiện đại, dễ mặc, không kén dáng. Mình nhận được nhiều lời khen ngay lần đầu mặc."
       }
     },
     "shipping": {
@@ -821,19 +821,19 @@
       "entries": "mục",
       "yes": "Có",
       "no": "Không"
-    },
-    "chatbot": {
-      "title": "Trợ lý AI",
-      "subtitle": "Hỏi tôi bất cứ điều gì!",
-      "welcome": "Hãy đặt câu hỏi cho tôi!",
-      "emptyAnswer": "Xin lỗi, không có phản hồi.",
-      "error": "Xin lỗi, đã xảy ra lỗi kết nối.",
-      "processing": "AI đang trả lời...",
-      "inputPlaceholder": "Nhập tin nhắn...",
-      "send": "Gửi",
-      "openLabel": "Mở Chat",
-      "closeLabel": "Đóng Chat",
-      "stock": "Kho"
     }
+  },
+  "chatbot": {
+    "title": "Trợ lý AI",
+    "subtitle": "Hỏi tôi bất cứ điều gì!",
+    "welcome": "Hãy đặt câu hỏi cho tôi!",
+    "emptyAnswer": "Xin lỗi, không có phản hồi.",
+    "error": "Xin lỗi, đã xảy ra lỗi kết nối.",
+    "processing": "AI đang trả lời...",
+    "inputPlaceholder": "Nhập tin nhắn...",
+    "send": "Gửi",
+    "openLabel": "Mở Chat",
+    "closeLabel": "Đóng Chat",
+    "stock": "Kho"
   }
 }

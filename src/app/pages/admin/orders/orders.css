@@ -1,1 +1,45 @@
+:host {
+	display: block;
+}
+
+.sixdo-orders__toolbar,
+.sixdo-orders__chips,
+.sixdo-orders__board {
+	box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.sixdo-orders__chips {
+	background-image: linear-gradient(130deg, rgba(90, 179, 2, 0.08), rgba(148, 163, 184, 0.05));
+}
+
+.sixdo-orders__mobile-card {
+	background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.92));
+}
+
+.sixdo-orders__mobile-expand,
+.sixdo-orders__desk-expand {
+	border-left: 3px solid rgba(90, 179, 2, 0.3);
+}
+
+.sixdo-orders__table {
+	border-collapse: collapse;
+}
+
+.sixdo-orders__row:hover {
+	box-shadow: inset 0 0 0 999px rgba(90, 179, 2, 0.04);
+}
+
+:host-context(.dark) .sixdo-orders__toolbar,
+:host-context(.dark) .sixdo-orders__chips,
+:host-context(.dark) .sixdo-orders__board {
+	box-shadow: 0 14px 30px rgba(2, 6, 23, 0.34);
+}
+
+:host-context(.dark) .sixdo-orders__chips {
+	background-image: linear-gradient(130deg, rgba(90, 179, 2, 0.1), rgba(30, 41, 59, 0.1));
+}
+
+:host-context(.dark) .sixdo-orders__mobile-card {
+	background: linear-gradient(180deg, rgba(15, 23, 42, 0.86), rgba(2, 6, 23, 0.86));
+}
 

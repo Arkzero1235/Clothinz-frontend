@@ -7,7 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-password-input',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, TranslateModule],
-  templateUrl: './password-input.html'
+  templateUrl: './password-input.html',
+  styleUrls: ['./password-input.css']
 })
 export class PasswordInputComponent {
   control = input.required<FormControl>();
