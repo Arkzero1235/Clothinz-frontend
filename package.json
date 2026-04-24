@@ -1,7 +1,7 @@
 {
-  "name": "sixdo-frontend",
+  "name": "clothinz-frontend",
   "version": "0.1.0",
-  "description": "Sixdo - Angular eCommerce frontend",
+  "description": "Clothinz - Angular eCommerce frontend",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
